@@ -1,5 +1,6 @@
 package tatsuya4lc.inventorysystem.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -106,18 +107,35 @@ public class MainController implements Initializable {
 
     @FXML
     void onSearchParts(ActionEvent event) {
-        String lookup = searchBarParts.getText();
-        ObservableList<Part> found = Inventory.lookupPart(lookup);
-        partView.setItems(found);
+        String search = searchBarParts.getText();
+        partView.setItems(Inventory.lookupPart(search));
+
+        if(Inventory.lookupPart(search).isEmpty()) {
+            int lookup = Integer.parseInt(search);
+            ObservableList<Part> found = FXCollections.observableArrayList();
+
+            if(Inventory.lookupPart(lookup) != null) {
+                found.add(Inventory.lookupPart(lookup));
+                partView.setItems(found);
+            }
+        }
         searchBarParts.setText("");
     }
 
     @FXML
     void onSearchProduct(ActionEvent event) {
-        String lookup = searchBarProducts.getText();
-        ObservableList<Product> found = Inventory.lookupProduct(lookup);
-        productView.setItems(found);
-        searchBarProducts.setText("");
+        String search = searchBarProducts.getText();
+        productView.setItems(Inventory.lookupProduct(search));
+
+        if(Inventory.lookupProduct(search).isEmpty()) {
+            int lookup = Integer.parseInt(search);
+            ObservableList<Product> found = FXCollections.observableArrayList();
+
+            if(Inventory.lookupProduct(lookup) != null) {
+                found.add(Inventory.lookupProduct(lookup));
+                productView.setItems(found);
+            }
+        } searchBarProducts.setText("");
     }
 
     @FXML

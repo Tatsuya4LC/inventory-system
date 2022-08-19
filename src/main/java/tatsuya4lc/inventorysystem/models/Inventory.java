@@ -44,7 +44,7 @@ public class Inventory {
     public static ObservableList<Product> lookupProduct(String productName) {
         foundProducts.clear();
 
-        for(Product product : allProducts) {
+        for(Product product : getAllProducts()) {
             if(product.getName().contains(productName)) {
                 foundProducts.add(product);
             }
