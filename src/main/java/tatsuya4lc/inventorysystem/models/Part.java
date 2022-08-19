@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.models;
+package tatsuya4lc.inventorysystem.models;
 
 /**
  * Supplied class Part.java

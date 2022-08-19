@@ -1,8 +1,12 @@
 module tasuya4lc.inventorysystem {
     requires javafx.controls;
     requires javafx.fxml;
-            
-                            
-    opens tasuya4lc.inventorysystem to javafx.fxml;
-    exports tasuya4lc.inventorysystem;
+
+
+    opens tatsuya4lc.inventorysystem to javafx.fxml;
+    exports tatsuya4lc.inventorysystem;
+    exports tatsuya4lc.inventorysystem.controllers;
+    opens tatsuya4lc.inventorysystem.controllers to javafx.fxml;
+    exports tatsuya4lc.inventorysystem.models;
+    opens tatsuya4lc.inventorysystem.models to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.controllers;
+package tatsuya4lc.inventorysystem.controllers;
 
 import javafx.fxml.Initializable;
 

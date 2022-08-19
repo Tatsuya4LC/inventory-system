@@ -1,13 +1,13 @@
-package tasuya4lc.inventorysystem;
+package tatsuya4lc.inventorysystem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import tasuya4lc.inventorysystem.models.InHouse;
-import tasuya4lc.inventorysystem.models.Inventory;
-import tasuya4lc.inventorysystem.models.Outsourced;
-import tasuya4lc.inventorysystem.models.Product;
+import tatsuya4lc.inventorysystem.models.InHouse;
+import tatsuya4lc.inventorysystem.models.Inventory;
+import tatsuya4lc.inventorysystem.models.Outsourced;
+import tatsuya4lc.inventorysystem.models.Product;
 
 import java.io.IOException;
 
@@ -32,10 +32,10 @@ public class MainApplication extends Application {
         Inventory.addPart(part2);
         Inventory.addPart(part3);
 
-        Product prod1 = new Product(1, "Pedal", 123.45, 10, 1, 15);
-        Product prod2 = new Product(2, "Handle", 234.56, 9, 2, 16);
-        Product prod3 = new Product(3, "Seat", 345.67, 8, 3, 17);
-        
+        Product prod1 = new Product(1, "Bicyle", 123.45, 10, 1, 15);
+        Product prod2 = new Product(2, "Motorcycle", 234.56, 9, 2, 16);
+        Product prod3 = new Product(3, "Bike", 345.67, 8, 3, 17);
+
         Inventory.addProduct(prod1);
         Inventory.addProduct(prod2);
         Inventory.addProduct(prod3);

@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.models;
+package tatsuya4lc.inventorysystem.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

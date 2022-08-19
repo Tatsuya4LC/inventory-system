@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.models;
+package tatsuya4lc.inventorysystem.models;
 
 public class Outsourced extends Part {
     private String companyName;

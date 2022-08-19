@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.controllers;
+package tatsuya4lc.inventorysystem.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,9 +7,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import tasuya4lc.inventorysystem.models.Inventory;
-import tasuya4lc.inventorysystem.models.Part;
-import tasuya4lc.inventorysystem.models.Product;
+import tatsuya4lc.inventorysystem.models.Inventory;
+import tatsuya4lc.inventorysystem.models.Part;
+import tatsuya4lc.inventorysystem.models.Product;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -113,9 +113,18 @@ public class MainController implements Initializable {
 
     }
 
+    @FXML
+    void onSelectParts(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onSelectProducts(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Main Controller Initialized");
 
         colProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -134,5 +143,9 @@ public class MainController implements Initializable {
         colPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
         partView.setItems(Inventory.getAllParts());
+
+
+
+        System.out.println("Main Controller Initialized");
     }
 }

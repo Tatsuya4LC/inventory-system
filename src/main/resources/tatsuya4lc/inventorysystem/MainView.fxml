@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tasuya4lc.inventorysystem.controllers.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.MainController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -19,13 +20,28 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutX="14.0" layoutY="2.0" spacing="10.0">
+                        <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="6.0">
                            <children>
-                              <TextField fx:id="searchBarProducts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="Product ID or Name" />
-                              <Button mnemonicParsing="false" onAction="#onSearchProduct" prefHeight="20.0" prefWidth="60.0" text="Search" />
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAddProduct" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onModifyProduct" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onRemoveProduct" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="searchBarProducts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchProduct" prefHeight="25.0" prefWidth="60.0" text="Search">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
-                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                            <top>
                               <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                            </top>
@@ -51,14 +67,7 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                            </left>
                         </BorderPane>
-                        <HBox layoutX="30.0" layoutY="330.0" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#onAddProduct" prefHeight="25.0" prefWidth="60.0" text="Add" />
-                              <Button mnemonicParsing="false" onAction="#onModifyProduct" prefHeight="25.0" prefWidth="60.0" text="Modify" />
-                              <Button mnemonicParsing="false" onAction="#onRemoveProduct" prefHeight="25.0" prefWidth="60.0" text="Remove" />
-                           </children>
-                        </HBox>
-                        <Button layoutX="537.0" layoutY="330.0" mnemonicParsing="false" onAction="#onExitProduct" prefHeight="25.0" prefWidth="60.0" text="Exit" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="30.0" />
+                        <Button layoutX="537.0" layoutY="330.0" maxHeight="25.0" maxWidth="40.0" minHeight="25.0" minWidth="40.0" mnemonicParsing="false" onAction="#onExitProduct" prefHeight="25.0" prefWidth="40.0" text="Exit" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="30.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -67,13 +76,24 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutX="14.0" layoutY="2.0" spacing="10.0">
+                        <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="6.0">
                            <children>
-                              <TextField fx:id="searchBarParts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="Part ID or Name" />
-                              <Button mnemonicParsing="false" onAction="#onSearchParts" prefHeight="20.0" prefWidth="60.0" text="Search" />
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAddPart" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onModifyPart" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onRemovePart" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="searchBarParts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchParts" prefHeight="25.0" prefWidth="60.0" text="Search" />
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
-                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                            <top>
                               <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                            </top>
@@ -99,14 +119,7 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                            </left>
                         </BorderPane>
-                        <HBox layoutX="30.0" layoutY="330.0" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#onAddPart" prefHeight="25.0" prefWidth="60.0" text="Add" />
-                              <Button mnemonicParsing="false" onAction="#onModifyPart" prefHeight="25.0" prefWidth="60.0" text="Modify" />
-                              <Button mnemonicParsing="false" onAction="#onRemovePart" prefHeight="25.0" prefWidth="60.0" text="Remove" />
-                           </children>
-                        </HBox>
-                        <Button layoutX="537.0" layoutY="330.0" mnemonicParsing="false" onAction="#onExitPart" prefHeight="25.0" prefWidth="60.0" text="Exit" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="30.0" />
+                        <Button layoutX="537.0" layoutY="330.0" maxHeight="25.0" maxWidth="40.0" minHeight="25.0" minWidth="40.0" mnemonicParsing="false" onAction="#onExitPart" prefHeight="25.0" prefWidth="40.0" text="Exit" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="30.0" />
                      </children>
                   </AnchorPane>
                </content>

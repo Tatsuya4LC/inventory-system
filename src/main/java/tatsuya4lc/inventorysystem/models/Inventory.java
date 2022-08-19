@@ -1,4 +1,4 @@
-package tasuya4lc.inventorysystem.models;
+package tatsuya4lc.inventorysystem.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +13,7 @@ public class Inventory {
     public static void addProduct(Product newProduct) {
         allProducts.add(newProduct);
     }
+
     public static Part lookupPart(int partId) {
         for(Part part : allParts) {
             if(part.getId() == partId) {
@@ -29,6 +30,7 @@ public class Inventory {
         }
         return null;
     }
+
     public static ObservableList<Part> lookupPart(String partName) {
         for(Part part : allParts) {
             if(part.getName().contains(partName)) {
@@ -45,18 +47,21 @@ public class Inventory {
         }
         return null;
     }
+
     public static void updatePart(int index, Part selectedPart) {
-        allParts.set(index, selectedPart);
+        getAllParts().set(index, selectedPart);
     }
     public static void updateProduct(int index, Product newProduct) {
-        allProducts.set(index, newProduct);
+        getAllProducts().set(index, newProduct);
     }
+
     public static boolean deletePart(Part selectedPart) {
-       return allParts.remove(selectedPart);
+       return getAllParts().remove(selectedPart);
     }
     public static boolean deleteProduct(Product selectedProduct) {
-        return allProducts.remove(selectedProduct);
+        return getAllProducts().remove(selectedProduct);
     }
+
     public static ObservableList<Part> getAllParts() {
         return allParts;
     }
