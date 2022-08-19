@@ -22,7 +22,7 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello");
+        System.out.println("Hello from Main Application");
 
         InHouse part1 = new InHouse(1, "Pedal", 123.45, 10, 1, 15, 1);
         Outsourced part2 = new Outsourced(2, "Handle", 234.56, 9, 2, 16, "Test");

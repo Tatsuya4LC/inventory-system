@@ -109,33 +109,46 @@ public class MainController implements Initializable {
     void onSearchParts(ActionEvent event) {
         String search = searchBarParts.getText();
         partView.setItems(Inventory.lookupPart(search));
+        searchBarParts.setText("");
 
-        if(Inventory.lookupPart(search).isEmpty()) {
-            int lookup = Integer.parseInt(search);
-            ObservableList<Part> found = FXCollections.observableArrayList();
+        if (Inventory.lookupPart(search).isEmpty()) {
+            try {
+                int searchInt = Integer.parseInt(search);
+                ObservableList<Part> found = FXCollections.observableArrayList();
 
-            if(Inventory.lookupPart(lookup) != null) {
-                found.add(Inventory.lookupPart(lookup));
-                partView.setItems(found);
+                if (Inventory.lookupPart(searchInt) != null) {
+                    found.add(Inventory.lookupPart(searchInt));
+                    partView.setItems(found);
+                }
+            }
+
+            catch (NumberFormatException e) {
+                partView.setItems(Inventory.lookupPart(search));
             }
         }
-        searchBarParts.setText("");
     }
 
     @FXML
     void onSearchProduct(ActionEvent event) {
         String search = searchBarProducts.getText();
         productView.setItems(Inventory.lookupProduct(search));
+        searchBarProducts.setText("");
 
         if(Inventory.lookupProduct(search).isEmpty()) {
-            int lookup = Integer.parseInt(search);
-            ObservableList<Product> found = FXCollections.observableArrayList();
+            try {
+                int searchInt = Integer.parseInt(search);
+                ObservableList<Product> found = FXCollections.observableArrayList();
 
-            if(Inventory.lookupProduct(lookup) != null) {
-                found.add(Inventory.lookupProduct(lookup));
-                productView.setItems(found);
+                if (Inventory.lookupProduct(searchInt) != null) {
+                    found.add(Inventory.lookupProduct(searchInt));
+                    productView.setItems(found);
+                }
             }
-        } searchBarProducts.setText("");
+
+            catch (NumberFormatException e) {
+                productView.setItems(Inventory.lookupProduct(search));
+            }
+        }
     }
 
     @FXML
@@ -158,12 +171,16 @@ public class MainController implements Initializable {
         colProductMin.setCellValueFactory(new PropertyValueFactory<>("min"));
         colProductMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
+        productView.setItems(Inventory.getAllProducts());
+
         colPartID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPartPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colPartStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         colPartMin.setCellValueFactory(new PropertyValueFactory<>("min"));
         colPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
+
+        partView.setItems(Inventory.getAllParts());
 
 
 

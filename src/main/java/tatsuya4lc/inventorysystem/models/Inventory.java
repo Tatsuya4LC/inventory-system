@@ -39,7 +39,8 @@ public class Inventory {
             if(part.getName().contains(partName)) {
                 foundParts.add(part);
             }
-        } return foundParts;
+        }
+            return foundParts;
     }
     public static ObservableList<Product> lookupProduct(String productName) {
         foundProducts.clear();
