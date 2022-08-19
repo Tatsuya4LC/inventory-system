@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    private static ObservableList<Part> foundParts = FXCollections.observableArrayList();
+    private static ObservableList<Product> foundProducts = FXCollections.observableArrayList();
 
     public static void addPart(Part newPart) {
         allParts.add(newPart);
@@ -15,15 +17,14 @@ public class Inventory {
     }
 
     public static Part lookupPart(int partId) {
-        for(Part part : allParts) {
+        for(Part part : getAllParts()) {
             if(part.getId() == partId) {
                 return part;
             }
-        }
-        return null;
+        } return null;
     }
     public static Product lookupProduct(int productId) {
-        for(Product product : allProducts) {
+        for(Product product : getAllProducts()) {
             if(product.getId() == productId) {
                 return product;
             }
@@ -32,20 +33,22 @@ public class Inventory {
     }
 
     public static ObservableList<Part> lookupPart(String partName) {
-        for(Part part : allParts) {
+        foundParts.clear();
+
+        for(Part part : getAllParts()) {
             if(part.getName().contains(partName)) {
-                return (ObservableList<Part>) part;
+                foundParts.add(part);
             }
-        }
-        return null;
+        } return foundParts;
     }
     public static ObservableList<Product> lookupProduct(String productName) {
+        foundProducts.clear();
+
         for(Product product : allProducts) {
             if(product.getName().contains(productName)) {
-                return (ObservableList<Product>) product;
+                foundProducts.add(product);
             }
-        }
-        return null;
+        } return foundProducts;
     }
 
     public static void updatePart(int index, Part selectedPart) {

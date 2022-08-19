@@ -1,5 +1,6 @@
 package tatsuya4lc.inventorysystem.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -105,22 +106,28 @@ public class MainController implements Initializable {
 
     @FXML
     void onSearchParts(ActionEvent event) {
-
+        String lookup = searchBarParts.getText();
+        ObservableList<Part> found = Inventory.lookupPart(lookup);
+        partView.setItems(found);
+        searchBarParts.setText("");
     }
 
     @FXML
     void onSearchProduct(ActionEvent event) {
-
+        String lookup = searchBarProducts.getText();
+        ObservableList<Product> found = Inventory.lookupProduct(lookup);
+        productView.setItems(found);
+        searchBarProducts.setText("");
     }
 
     @FXML
     void onSelectParts(ActionEvent event) {
-
+        productView.setItems(Inventory.getAllProducts());
     }
 
     @FXML
     void onSelectProducts(ActionEvent event) {
-
+        partView.setItems(Inventory.getAllParts());
     }
 
     @Override
@@ -133,8 +140,6 @@ public class MainController implements Initializable {
         colProductMin.setCellValueFactory(new PropertyValueFactory<>("min"));
         colProductMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
-        productView.setItems(Inventory.getAllProducts());
-
         colPartID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPartPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -142,7 +147,6 @@ public class MainController implements Initializable {
         colPartMin.setCellValueFactory(new PropertyValueFactory<>("min"));
         colPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
-        partView.setItems(Inventory.getAllParts());
 
 
 
