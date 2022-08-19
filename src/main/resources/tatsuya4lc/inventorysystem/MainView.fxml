@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tasuya4lc.inventorysystem.controllers.MainController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Products">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="14.0" layoutY="2.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="searchBarProducts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="Product ID or Name" />
+                              <Button mnemonicParsing="false" onAction="#onSearchProduct" prefHeight="20.0" prefWidth="60.0" text="Search" />
+                           </children>
+                        </HBox>
+                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                           <top>
+                              <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </top>
+                           <bottom>
+                              <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <right>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+                           </right>
+                           <center>
+                              <TableView fx:id="productView" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn fx:id="colProductID" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="colProductName" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="colProductPrice" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="colProductStock" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="colProductMin" prefWidth="100.0" text="Min" />
+                                    <TableColumn fx:id="colProductMax" prefWidth="100.0" text="Max" />
+                                </columns>
+                              </TableView>
+                           </center>
+                           <left>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+                           </left>
+                        </BorderPane>
+                        <HBox layoutX="30.0" layoutY="330.0" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onAddProduct" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                              <Button mnemonicParsing="false" onAction="#onModifyProduct" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                              <Button mnemonicParsing="false" onAction="#onRemoveProduct" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                           </children>
+                        </HBox>
+                        <Button layoutX="537.0" layoutY="330.0" mnemonicParsing="false" onAction="#onExitProduct" prefHeight="25.0" prefWidth="60.0" text="Exit" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="30.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Parts">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="14.0" layoutY="2.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="searchBarParts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="Part ID or Name" />
+                              <Button mnemonicParsing="false" onAction="#onSearchParts" prefHeight="20.0" prefWidth="60.0" text="Search" />
+                           </children>
+                        </HBox>
+                        <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                           <top>
+                              <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </top>
+                           <bottom>
+                              <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <right>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+                           </right>
+                           <center>
+                              <TableView fx:id="partView" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+                                 <columns>
+                                    <TableColumn fx:id="colPartID" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="colPartName" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="colPartPrice" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="colPartStock" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="colPartMin" prefWidth="100.0" text="Min" />
+                                    <TableColumn fx:id="colPartMax" prefWidth="100.0" text="Max" />
+                                 </columns>
+                              </TableView>
+                           </center>
+                           <left>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+                           </left>
+                        </BorderPane>
+                        <HBox layoutX="30.0" layoutY="330.0" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onAddPart" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                              <Button mnemonicParsing="false" onAction="#onModifyPart" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                              <Button mnemonicParsing="false" onAction="#onRemovePart" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                           </children>
+                        </HBox>
+                        <Button layoutX="537.0" layoutY="330.0" mnemonicParsing="false" onAction="#onExitPart" prefHeight="25.0" prefWidth="60.0" text="Exit" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="30.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
