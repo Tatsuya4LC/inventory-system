@@ -3,7 +3,6 @@ package tatsuya4lc.inventorysystem.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -14,10 +13,8 @@ import tatsuya4lc.inventorysystem.models.Outsourced;
 import tatsuya4lc.inventorysystem.models.Part;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class PartController implements Initializable {
+public class PartController {
     Part partHolder;
     private int partToModifyIndex;
     private boolean updatePart = false;
@@ -73,32 +70,40 @@ public class PartController implements Initializable {
     @FXML
     void onPartSave(ActionEvent event) throws IOException {
         if (inHouse.isSelected()) {
-            if(!partInHouse() && !updatePart) {
+            if(partInHouse() && !updatePart) {
                 Inventory.addPart(partHolder);
                 mainMenu(event);
-            } else if (partInHouse())  {
+            }
+
+            else if (updatePart && partInHouse())  {
+                Inventory.updatePart(partToModifyIndex, partHolder);
+                mainMenu(event);
+            }
+
+            else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Incorrect Input Type");
                 alert.setContentText("Please enter a valid value for each field with \"!\"");
                 alert.showAndWait();
-            } else {
-                Inventory.updatePart(partToModifyIndex, partHolder);
-                mainMenu(event);
             }
         }
 
         if (outSourced.isSelected()) {
-            if(!partOutSourced() && !updatePart) {
+            if(partOutSourced() && !updatePart) {
                 Inventory.addPart(partHolder);
                 mainMenu(event);
-            } else if (partOutSourced())  {
+            }
+
+            else if (updatePart && partOutSourced())  {
+                Inventory.updatePart(partToModifyIndex, partHolder);
+                mainMenu(event);
+            }
+
+            else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Incorrect Input Type");
                 alert.setContentText("Please enter a valid value for each field with \"!\"");
                 alert.showAndWait();
-            } else {
-                Inventory.updatePart(partToModifyIndex, partHolder);
-                mainMenu(event);
             }
         }
     }
@@ -128,20 +133,22 @@ public class PartController implements Initializable {
                 i++;
             }
         }
+
         return i;
     }
 
     public boolean partInHouse() {
         String name = textPartName.getText();
-        boolean error = false;
+        boolean noError = true;
         double price = 0.0;
         int stock = 0, max = 0, min = 0, machineId = 0;
 
         try {
             price = Double.parseDouble(textPartPrice.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartPrice.setPromptText("! Exception: " + e.getMessage());
             textPartPrice.clear();
         }
@@ -149,8 +156,9 @@ public class PartController implements Initializable {
         try {
             stock = Integer.parseInt(textPartStock.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartStock.setPromptText("! Exception: " + e.getMessage());
             textPartStock.clear();
         }
@@ -158,8 +166,9 @@ public class PartController implements Initializable {
         try {
             max = Integer.parseInt(textPartMax.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartMax.setPromptText("! Exception: " + e.getMessage());
             textPartMax.clear();
         }
@@ -167,8 +176,9 @@ public class PartController implements Initializable {
         try {
             min = Integer.parseInt(textPartMin.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartMin.setPromptText("! Exception: " + e.getMessage());
             textPartMin.clear();
         }
@@ -176,33 +186,37 @@ public class PartController implements Initializable {
         try {
             machineId = Integer.parseInt(textPartInOut.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartInOut.setPromptText("! Exception: " + e.getMessage());
             textPartInOut.clear();
         }
 
         if (updatePart) {
             partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
-        } else {
+        }
+
+        else {
             partHolder = new InHouse(partID(), name, price, stock, min, max, machineId);
         }
 
-        return error;
+        return noError;
     }
 
     public boolean partOutSourced() {
         String name = textPartName.getText();
         String machineId = textPartInOut.getText();
-        boolean error = false;
+        boolean noError = true;
         double price = 0.0;
         int stock = 0, max = 0, min = 0;
 
         try {
             price = Double.parseDouble(textPartPrice.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartPrice.setPromptText("! Exception: " + e.getMessage());
             textPartPrice.clear();
         }
@@ -210,8 +224,9 @@ public class PartController implements Initializable {
         try {
             stock = Integer.parseInt(textPartStock.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartStock.setPromptText("! Exception: " + e.getMessage());
             textPartStock.clear();
         }
@@ -219,8 +234,9 @@ public class PartController implements Initializable {
         try {
             max = Integer.parseInt(textPartMax.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartMax.setPromptText("! Exception: " + e.getMessage());
             textPartMax.clear();
         }
@@ -228,19 +244,22 @@ public class PartController implements Initializable {
         try {
             min = Integer.parseInt(textPartMin.getText());
         }
+
         catch (NumberFormatException e) {
-            error = true;
+            noError = false;
             textPartMin.setPromptText("! Exception: " + e.getMessage());
             textPartMin.clear();
         }
 
         if (updatePart) {
             partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
-        } else {
+        }
+
+        else {
             partHolder = new Outsourced(partID(), name, price, stock, min, max, machineId);
         }
 
-        return error;
+        return noError;
     }
 
     public void isModifyingPart(int index, Part part) {
@@ -264,10 +283,5 @@ public class PartController implements Initializable {
             textPartInOut.setText(((Outsourced) part).getCompanyName());
             outSourced.fire();
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Part Controller Initialized");
     }
 }

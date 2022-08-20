@@ -42,8 +42,6 @@ public class MainApplication extends Application {
         prod1.addAssociatedPart(part2);
         prod1.addAssociatedPart(part3);
 
-        System.out.println();
-
         launch();
     }
 }

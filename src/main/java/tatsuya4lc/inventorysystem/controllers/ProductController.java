@@ -102,10 +102,12 @@ public class ProductController implements Initializable {
             for (Part part : associatedPartsList) {
                 if (part.getId() == selectedPart.getId()) {
                     exist = true;
+                    break;
                 }
             }
+        }
 
-        } else {
+        else {
             if (associatedPartsList.isEmpty()) {
                 associatedPartsList.add(selectedPart);
         }
@@ -113,13 +115,15 @@ public class ProductController implements Initializable {
             for (Part part : associatedPartsList) {
                 if (part.getId() == selectedPart.getId()) {
                     exist = true;
+                    break;
                 }
             }
-
         }
+
         if (!exist) {
             associatedPartsList.add(selectedPart);
         }
+
         productAssociatedPartTable.setItems(associatedPartsList);
     }
 
@@ -131,20 +135,24 @@ public class ProductController implements Initializable {
     @FXML
     void onProductSave(ActionEvent event) throws IOException {
         if (placeProduct() && !updateProduct) {
-            for(int i = 0; i < associatedPartsList.size(); i++) {
-                productHolder.addAssociatedPart(associatedPartsList.get(i));
+            for (Part part : associatedPartsList) {
+                productHolder.addAssociatedPart(part);
             }
 
             Inventory.addProduct(productHolder);
             mainMenu(event);
-        } else if (updateProduct && placeProduct()) {
-            for(int i = 0; i < associatedPartsList.size(); i++) {
-                productHolder.addAssociatedPart(associatedPartsList.get(i));
+        }
+
+        else if (updateProduct && placeProduct()) {
+            for (Part part : associatedPartsList) {
+                productHolder.addAssociatedPart(part);
             }
 
             Inventory.updateProduct(productToModifyIndex, productHolder);
             mainMenu(event);
-        } else {
+        }
+
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Incorrect Input Type");
             alert.setContentText("Please enter a valid value for each field with \"!\"");
@@ -161,7 +169,9 @@ public class ProductController implements Initializable {
             if (Inventory.lookupPart(i) != null) {
                 found.add(Inventory.lookupPart(i));
                 productPartTable.setItems(found);
-            } else if (Inventory.lookupProduct(i) == null) {
+            }
+
+            else if (Inventory.lookupPart(i) == null) {
                 productPartTable.setItems(found);
             }
         }
@@ -183,7 +193,9 @@ public class ProductController implements Initializable {
                 if (Inventory.lookupPart(i) != null) {
                     found.add(Inventory.lookupPart(i));
                     productPartTable.setItems(found);
-                } else if (Inventory.lookupProduct(i) == null) {
+                }
+
+                else if (Inventory.lookupPart(i) == null) {
                     productPartTable.setItems(found);
                 }
             }
@@ -211,9 +223,6 @@ public class ProductController implements Initializable {
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
-
-        MainController MC = fxmlLoader.getController();
-        MC.selectTabProduct();
     }
 
     public int productID(){
@@ -224,6 +233,7 @@ public class ProductController implements Initializable {
                 i++;
             }
         }
+
         return i;
     }
 
@@ -231,11 +241,12 @@ public class ProductController implements Initializable {
         String name = textProductName.getText();
         boolean noError = true;
         double price = 0.0;
-        int id = 0, stock = 0, min = 0, max = 0;
+        int stock = 0, min = 0, max = 0;
 
         try {
             price = Double.parseDouble(textProductPrice.getText());
         }
+
         catch (NumberFormatException e) {
             noError = false;
             textProductPrice.setPromptText("! Exception: " + e.getMessage());
@@ -244,6 +255,7 @@ public class ProductController implements Initializable {
         try {
             stock = Integer.parseInt(textProductStock.getText());
         }
+
         catch (NumberFormatException e) {
             noError = false;
             textProductStock.setPromptText("! Exception: " + e.getMessage());
@@ -252,6 +264,7 @@ public class ProductController implements Initializable {
         try {
             min = Integer.parseInt(textProductMin.getText());
         }
+
         catch (NumberFormatException e) {
             noError = false;
             textProductMin.setPromptText("! Exception: " + e.getMessage());
@@ -260,6 +273,7 @@ public class ProductController implements Initializable {
         try {
             max = Integer.parseInt(textProductMax.getText());
         }
+
         catch (NumberFormatException e) {
             noError = false;
             textProductMax.setPromptText("! Exception: " + e.getMessage());
@@ -267,7 +281,9 @@ public class ProductController implements Initializable {
 
         if (updateProduct) {
             productHolder = new Product(Integer.parseInt(textProductID.getText()), name, price, stock, min, max);
-        } else {
+        }
+
+        else {
             productHolder = new Product(productID(), name, price, stock, min, max);
         }
 
@@ -306,7 +322,5 @@ public class ProductController implements Initializable {
         columnAssociatedPartStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         columnAssociatedPartMin.setCellValueFactory(new PropertyValueFactory<>("min"));
         columnAssociatedPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
-
-        System.out.println("Product Controller Initialized");
     }
 }

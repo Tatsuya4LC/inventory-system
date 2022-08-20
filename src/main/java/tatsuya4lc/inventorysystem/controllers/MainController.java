@@ -103,7 +103,9 @@ public class MainController implements Initializable {
             alert.setTitle("Error");
             alert.setContentText("Item selection does not exist\nPlease select an item");
             alert.showAndWait();
-        } else {
+        }
+
+        else {
             FXMLLoader loader = partMenu(event);
             PartController PaC = loader.getController();
             PaC.isModifyingPart(partTable.getSelectionModel().getSelectedIndex(), partTable.getSelectionModel().getSelectedItem());
@@ -117,7 +119,9 @@ public class MainController implements Initializable {
             alert.setTitle("Error");
             alert.setContentText("Item selection does not exist\nPlease select an item");
             alert.showAndWait();
-        } else {
+        }
+
+        else {
             FXMLLoader loader = productMenu(event);
             ProductController PaC = loader.getController();
             PaC.isModifyingProduct(productTable.getSelectionModel().getSelectedIndex(), productTable.getSelectionModel().getSelectedItem());
@@ -147,7 +151,9 @@ public class MainController implements Initializable {
             if (Inventory.lookupPart(i) != null) {
                 found.add(Inventory.lookupPart(i));
                 partTable.setItems(found);
-            } else if (Inventory.lookupProduct(i) == null) {
+            }
+
+            else if (Inventory.lookupPart(i) == null) {
                 partTable.setItems(found);
             }
         }
@@ -168,7 +174,9 @@ public class MainController implements Initializable {
             if (Inventory.lookupProduct(i) != null) {
                 found.add(Inventory.lookupProduct(i));
                 productTable.setItems(found);
-            } else if (Inventory.lookupProduct(i) == null) {
+            }
+
+            else if (Inventory.lookupProduct(i) == null) {
                 productTable.setItems(found);
             }
         }
@@ -190,7 +198,9 @@ public class MainController implements Initializable {
                 if (Inventory.lookupPart(i) != null) {
                     found.add(Inventory.lookupPart(i));
                     partTable.setItems(found);
-                } else if (Inventory.lookupProduct(i) == null) {
+                }
+
+                else if (Inventory.lookupPart(i) == null) {
                     partTable.setItems(found);
                 }
             }
@@ -213,7 +223,9 @@ public class MainController implements Initializable {
                 if (Inventory.lookupProduct(i) != null) {
                     found.add(Inventory.lookupProduct(i));
                     productTable.setItems(found);
-                } else if (Inventory.lookupProduct(i) == null) {
+                }
+
+                else if (Inventory.lookupProduct(i) == null) {
                     productTable.setItems(found);
                 }
             }
@@ -229,11 +241,6 @@ public class MainController implements Initializable {
     public void selectTabPart() {
         SingleSelectionModel<Tab> selectionModel = selectedParts.getTabPane().getSelectionModel();
         selectionModel.select(selectedParts);
-    }
-
-    public void selectTabProduct() {
-        SingleSelectionModel<Tab> selectionModel = selectedProducts.getTabPane().getSelectionModel();
-        selectionModel.select(selectedProducts);
     }
 
     public FXMLLoader partMenu(ActionEvent event) throws IOException {
@@ -259,7 +266,6 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         columnProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnProductPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
