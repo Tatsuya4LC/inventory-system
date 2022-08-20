@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0.1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661021884395</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="version 0.1">
+      <created>1661024702876</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1661024702876</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +124,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -135,6 +149,7 @@
     <MESSAGE value="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar&#10;- added a try and catch block for the NumberFormatException in the searchBar" />
     <MESSAGE value="part view &amp; controller fully functional" />
     <MESSAGE value="version 0" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0" />
+    <MESSAGE value="version 0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.1" />
   </component>
 </project>
