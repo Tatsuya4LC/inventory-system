@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.MainController">
+<AnchorPane maxHeight="400.0" maxWidth="627.0" minHeight="400.0" minWidth="627.0" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.MainController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -31,7 +31,7 @@
                               </HBox>
                               <HBox spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchBarProducts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <TextField fx:id="searchBarProducts" alignment="CENTER" onKeyPressed="#onEnterProduct" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
                                     <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchProduct" prefHeight="25.0" prefWidth="60.0" text="Search">
                                        <font>
                                           <Font size="11.0" />
@@ -52,14 +52,14 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                            </right>
                            <center>
-                              <TableView fx:id="productView" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="productTable" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
                                 <columns>
-                                  <TableColumn fx:id="colProductID" prefWidth="100.0" text="Product ID" />
-                                    <TableColumn fx:id="colProductName" prefWidth="100.0" text="Product Name" />
-                                    <TableColumn fx:id="colProductPrice" prefWidth="100.0" text="Price" />
-                                    <TableColumn fx:id="colProductStock" prefWidth="100.0" text="Stock" />
-                                    <TableColumn fx:id="colProductMin" prefWidth="100.0" text="Min" />
-                                    <TableColumn fx:id="colProductMax" prefWidth="100.0" text="Max" />
+                                  <TableColumn fx:id="columnProductID" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="columnProductName" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="columnProductPrice" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="columnProductStock" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="columnProductMin" prefWidth="100.0" text="Min" />
+                                    <TableColumn fx:id="columnProductMax" prefWidth="100.0" text="Max" />
                                 </columns>
                               </TableView>
                            </center>
@@ -87,7 +87,7 @@
                               </HBox>
                               <HBox spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchBarParts" alignment="CENTER" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <TextField fx:id="searchBarParts" alignment="CENTER" onKeyPressed="#onEnterPart" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
                                     <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchParts" prefHeight="25.0" prefWidth="60.0" text="Search" />
                                  </children>
                               </HBox>
@@ -104,14 +104,14 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                            </right>
                            <center>
-                              <TableView fx:id="partView" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="partTable" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn fx:id="colPartID" prefWidth="100.0" text="Part ID" />
-                                    <TableColumn fx:id="colPartName" prefWidth="100.0" text="Part Name" />
-                                    <TableColumn fx:id="colPartPrice" prefWidth="100.0" text="Price" />
-                                    <TableColumn fx:id="colPartStock" prefWidth="100.0" text="Stock" />
-                                    <TableColumn fx:id="colPartMin" prefWidth="100.0" text="Min" />
-                                    <TableColumn fx:id="colPartMax" prefWidth="100.0" text="Max" />
+                                    <TableColumn fx:id="columnPartID" prefWidth="100.0" text="Part ID" />
+                                    <TableColumn fx:id="columnPartName" prefWidth="100.0" text="Part Name" />
+                                    <TableColumn fx:id="columnPartPrice" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="columnPartStock" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="columnPartMin" prefWidth="100.0" text="Min" />
+                                    <TableColumn fx:id="columnPartMax" prefWidth="100.0" text="Max" />
                                  </columns>
                               </TableView>
                            </center>

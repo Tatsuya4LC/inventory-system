@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.PartController">
+<AnchorPane maxHeight="467.0" maxWidth="412.0" minHeight="467.0" minWidth="412.0" prefHeight="467.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.PartController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -54,32 +54,32 @@
                                  <children>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <Label fx:id="labelPartID" prefHeight="34.0" prefWidth="140.0" text="ID" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="ID" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Label fx:id="labelPartName" prefHeight="34.0" prefWidth="140.0" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                                        <children>
-                                          <Label fx:id="labelPartPrice" prefHeight="34.0" prefWidth="140.0" text="Price" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="Price" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                                        <children>
-                                          <Label fx:id="labelPartStock" prefHeight="34.0" prefWidth="140.0" text="Stock" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="Stock" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                                        <children>
-                                          <Label fx:id="labelPartMin" prefHeight="34.0" prefWidth="140.0" text="Minimum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="Minimum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                                        <children>
-                                          <Label fx:id="labelPartMax" prefHeight="34.0" prefWidth="140.0" text="Maximum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label prefHeight="34.0" prefWidth="140.0" text="Maximum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
@@ -124,9 +124,9 @@
                                     </AnchorPane>
                                  </children>
                               </GridPane>
-                              <Label fx:id="windowHeader" layoutX="20.0" layoutY="14.0" maxHeight="27.0" maxWidth="101.0" minHeight="27.0" minWidth="101.0" prefHeight="27.0" prefWidth="101.0" text="Add Part" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="14.0">
+                              <Label fx:id="windowHeaderPart" layoutX="20.0" layoutY="14.0" maxHeight="40.0" maxWidth="140.0" minHeight="27.0" minWidth="101.0" prefHeight="40.0" prefWidth="140.0" text="Add Part" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="14.0">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
                               <VBox layoutX="189.0" layoutY="41.0" spacing="10.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="41.0">
@@ -139,10 +139,10 @@
                                     <RadioButton fx:id="outSourced" mnemonicParsing="false" onAction="#optionOutSourced" text="Outsourced" toggleGroup="$partSource" />
                                  </children>
                               </VBox>
-                              <HBox layoutX="110.0" layoutY="351.0" spacing="10.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="20.0">
+                              <HBox layoutX="231.0" layoutY="376.0" spacing="30.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                  <children>
-                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="60.0" text="Save" />
-                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onPartSave" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onPartCancel" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
                                  </children>
                               </HBox>
                            </children>

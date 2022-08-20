@@ -22,8 +22,6 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello from Main Application");
-
         InHouse part1 = new InHouse(1, "Pedal", 123.45, 10, 1, 15, 1);
         Outsourced part2 = new Outsourced(2, "Handle", 234.56, 9, 2, 16, "Test");
         InHouse part3 = new InHouse(3, "Seat", 345.67, 8, 3, 17, 3);
@@ -39,6 +37,12 @@ public class MainApplication extends Application {
         Inventory.addProduct(prod1);
         Inventory.addProduct(prod2);
         Inventory.addProduct(prod3);
+
+        prod1.addAssociatedPart(part1);
+        prod1.addAssociatedPart(part2);
+        prod1.addAssociatedPart(part3);
+
+        System.out.println();
 
         launch();
     }

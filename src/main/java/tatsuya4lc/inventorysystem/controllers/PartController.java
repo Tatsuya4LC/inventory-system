@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PartController implements Initializable {
+    Part partHolder;
     private int partToModifyIndex;
     private boolean updatePart = false;
 
@@ -25,31 +26,10 @@ public class PartController implements Initializable {
     private RadioButton inHouse;
 
     @FXML
-    private Label labelPartID;
-
-    @FXML
     private Label labelPartInOut;
 
     @FXML
-    private Label labelPartMax;
-
-    @FXML
-    private Label labelPartMin;
-
-    @FXML
-    private Label labelPartName;
-
-    @FXML
-    private Label labelPartPrice;
-
-    @FXML
-    private Label labelPartStock;
-
-    @FXML
     private RadioButton outSourced;
-
-    @FXML
-    private ToggleGroup partSource;
 
     @FXML
     private TextField textPartID;
@@ -73,33 +53,58 @@ public class PartController implements Initializable {
     private TextField textPartStock;
 
     @FXML
-    private Label windowHeader;
+    private Label windowHeaderPart;
 
     @FXML
-    void optionInHouse(ActionEvent event) {
-        labelPartInOut.setText("Machine ID");;
+    private ToggleGroup partSource;
+
+    @FXML
+    void optionInHouse() {
+        labelPartInOut.setText("Machine ID");
         textPartInOut.setPromptText("Enter Machine ID");
     }
 
     @FXML
-    void optionOutSourced(ActionEvent event) {
+    void optionOutSourced() {
         labelPartInOut.setText("Company Name");
         textPartInOut.setPromptText("Enter Company Name");
     }
 
     @FXML
-    void onSave(ActionEvent event) throws IOException {
+    void onPartSave(ActionEvent event) throws IOException {
         if (inHouse.isSelected()) {
-            inHousePartSave(event);
+            if(!partInHouse() && !updatePart) {
+                Inventory.addPart(partHolder);
+                mainMenu(event);
+            } else if (partInHouse())  {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Incorrect Input Type");
+                alert.setContentText("Please enter a valid value for each field with \"!\"");
+                alert.showAndWait();
+            } else {
+                Inventory.updatePart(partToModifyIndex, partHolder);
+                mainMenu(event);
+            }
         }
 
         if (outSourced.isSelected()) {
-            outSourcedPartSave(event);
+            if(!partOutSourced() && !updatePart) {
+                Inventory.addPart(partHolder);
+                mainMenu(event);
+            } else if (partOutSourced())  {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Incorrect Input Type");
+                alert.setContentText("Please enter a valid value for each field with \"!\"");
+                alert.showAndWait();
+            } else {
+                Inventory.updatePart(partToModifyIndex, partHolder);
+                mainMenu(event);
+            }
         }
     }
 
     @FXML
-    void onCancel(ActionEvent event) throws IOException {
+    void onPartCancel(ActionEvent event) throws IOException {
             mainMenu(event);
     }
 
@@ -126,10 +131,10 @@ public class PartController implements Initializable {
         return i;
     }
 
-    public void inHousePartSave(ActionEvent event) throws IOException {
+    public boolean partInHouse() {
         String name = textPartName.getText();
         boolean error = false;
-        double price = 0;
+        double price = 0.0;
         int stock = 0, max = 0, min = 0, machineId = 0;
 
         try {
@@ -177,25 +182,20 @@ public class PartController implements Initializable {
             textPartInOut.clear();
         }
 
-        if(!error && !updatePart) {
-            Inventory.addPart(new InHouse(partID(), name, price, stock, min, max, machineId));
-            mainMenu(event);
-        } else if (!error && updatePart)  {
-            Inventory.updatePart(partToModifyIndex, new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId));
-            mainMenu(event);
+        if (updatePart) {
+            partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Incorrect Input Type");
-            alert.setContentText("Please enter a valid value for each field with \"!\"");
-            alert.showAndWait();
+            partHolder = new InHouse(partID(), name, price, stock, min, max, machineId);
         }
+
+        return error;
     }
 
-    public void outSourcedPartSave(ActionEvent event) throws IOException {
+    public boolean partOutSourced() {
         String name = textPartName.getText();
         String machineId = textPartInOut.getText();
         boolean error = false;
-        double price = 0;
+        double price = 0.0;
         int stock = 0, max = 0, min = 0;
 
         try {
@@ -234,24 +234,19 @@ public class PartController implements Initializable {
             textPartMin.clear();
         }
 
-        if(!error && !updatePart) {
-            Inventory.addPart(new Outsourced(partID(), name, price, stock, min, max, machineId));
-            mainMenu(event);
-        } else if (!error && updatePart)  {
-            Inventory.updatePart(partToModifyIndex, new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId));
-            mainMenu(event);
+        if (updatePart) {
+            partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Incorrect Input Type");
-            alert.setContentText("Please enter a valid value for each field with \"!\"");
-            alert.showAndWait();
+            partHolder = new Outsourced(partID(), name, price, stock, min, max, machineId);
         }
+
+        return error;
     }
 
     public void isModifyingPart(int index, Part part) {
         partToModifyIndex = index;
         updatePart = true;
-        windowHeader.setText("Modify Part");
+        windowHeaderPart.setText("Modify Part");
 
         textPartID.setText(String.valueOf(part.getId()));
         textPartName.setText(part.getName());

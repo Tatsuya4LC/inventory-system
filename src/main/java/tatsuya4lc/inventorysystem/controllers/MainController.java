@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tatsuya4lc.inventorysystem.MainApplication;
 import tatsuya4lc.inventorysystem.models.Inventory;
@@ -21,46 +23,46 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     @FXML
-    private TableColumn<Part, Integer> colPartID;
+    private TableColumn<Part, Integer> columnPartID;
 
     @FXML
-    private TableColumn<Part, Integer> colPartMax;
+    private TableColumn<Part, Integer> columnPartMax;
 
     @FXML
-    private TableColumn<Part, Integer> colPartMin;
+    private TableColumn<Part, Integer> columnPartMin;
 
     @FXML
-    private TableColumn<Part, String> colPartName;
+    private TableColumn<Part, String> columnPartName;
 
     @FXML
-    private TableColumn<Part, Double> colPartPrice;
+    private TableColumn<Part, Double> columnPartPrice;
 
     @FXML
-    private TableColumn<Part, Integer> colPartStock;
+    private TableColumn<Part, Integer> columnPartStock;
 
     @FXML
-    private TableColumn<Product, Integer> colProductID;
+    private TableColumn<Product, Integer> columnProductID;
 
     @FXML
-    private TableColumn<Product, Integer> colProductMax;
+    private TableColumn<Product, Integer> columnProductMax;
 
     @FXML
-    private TableColumn<Product, Integer> colProductMin;
+    private TableColumn<Product, Integer> columnProductMin;
 
     @FXML
-    private TableColumn<Product, String> colProductName;
+    private TableColumn<Product, String> columnProductName;
 
     @FXML
-    private TableColumn<Product, Double> colProductPrice;
+    private TableColumn<Product, Double> columnProductPrice;
 
     @FXML
-    private TableColumn<Product, Integer> colProductStock;
+    private TableColumn<Product, Integer> columnProductStock;
 
     @FXML
-    private TableView<Part> partView;
+    private TableView<Part> partTable;
 
     @FXML
-    private TableView<Product> productView;
+    private TableView<Product> productTable;
 
     @FXML
     private TextField searchBarParts;
@@ -76,95 +78,152 @@ public class MainController implements Initializable {
 
     @FXML
     void onAddPart(ActionEvent event) throws IOException {
-        partView(event, "PartView.fxml");
+        partMenu(event);
     }
 
     @FXML
-    void onAddProduct(ActionEvent event) {
-
+    void onAddProduct(ActionEvent event) throws IOException {
+        productMenu(event);
     }
 
     @FXML
-    void onExitPart(ActionEvent event) {
+    void onExitPart() {
         System.exit(0);
     }
 
     @FXML
-    void onExitProduct(ActionEvent event) {
+    void onExitProduct() {
         System.exit(0);
     }
 
     @FXML
     void onModifyPart(ActionEvent event) throws IOException {
-        if (partView.getSelectionModel().isEmpty()) {
+        if (partTable.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setContentText("Item selection does not exist\nPlease select an item");
             alert.showAndWait();
         } else {
-            FXMLLoader loader = partView(event, "PartView.fxml");
-            PartController PrC = loader.getController();
-            PrC.isModifyingPart(partView.getSelectionModel().getSelectedIndex(), partView.getSelectionModel().getSelectedItem());
+            FXMLLoader loader = partMenu(event);
+            PartController PaC = loader.getController();
+            PaC.isModifyingPart(partTable.getSelectionModel().getSelectedIndex(), partTable.getSelectionModel().getSelectedItem());
         }
     }
 
     @FXML
-    void onModifyProduct(ActionEvent event) {
-
+    void onModifyProduct(ActionEvent event) throws IOException {
+        if (productTable.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setContentText("Item selection does not exist\nPlease select an item");
+            alert.showAndWait();
+        } else {
+            FXMLLoader loader = productMenu(event);
+            ProductController PaC = loader.getController();
+            PaC.isModifyingProduct(productTable.getSelectionModel().getSelectedIndex(), productTable.getSelectionModel().getSelectedItem());
+        }
     }
 
     @FXML
-    void onRemovePart(ActionEvent event) {
-        Inventory.deletePart(partView.getSelectionModel().getSelectedItem());
-        partView.setItems(Inventory.getAllParts());
-        partView.getSelectionModel().select(null);
+    void onRemovePart() {
+        Inventory.deletePart(partTable.getSelectionModel().getSelectedItem());
+        partTable.setItems(Inventory.getAllParts());
+        partTable.getSelectionModel().select(null);
     }
 
     @FXML
-    void onRemoveProduct(ActionEvent event) {
-        Inventory.deleteProduct(productView.getSelectionModel().getSelectedItem());
-        productView.setItems(Inventory.getAllProducts());
-        productView.getSelectionModel().select(null);
+    void onRemoveProduct() {
+        Inventory.deleteProduct(productTable.getSelectionModel().getSelectedItem());
+        productTable.setItems(Inventory.getAllProducts());
+        productTable.getSelectionModel().select(null);
     }
 
     @FXML
-    void onSearchParts(ActionEvent event) {
+    void onSearchParts() {
         try {
             int i = Integer.parseInt(searchBarParts.getText());
             ObservableList<Part> found = FXCollections.observableArrayList();
 
             if (Inventory.lookupPart(i) != null) {
                 found.add(Inventory.lookupPart(i));
-                partView.setItems(found);
+                partTable.setItems(found);
             } else if (Inventory.lookupProduct(i) == null) {
-                partView.setItems(found);
+                partTable.setItems(found);
             }
         }
 
         catch (NumberFormatException e) {
-            partView.setItems(Inventory.lookupPart(searchBarParts.getText()));
+            partTable.setItems(Inventory.lookupPart(searchBarParts.getText()));
         }
+
+        searchBarParts.clear();
     }
 
     @FXML
-    void onSearchProduct(ActionEvent event) {
+    void onSearchProduct() {
         try {
             int i = Integer.parseInt(searchBarProducts.getText());
             ObservableList<Product> found = FXCollections.observableArrayList();
 
             if (Inventory.lookupProduct(i) != null) {
                 found.add(Inventory.lookupProduct(i));
-                productView.setItems(found);
+                productTable.setItems(found);
             } else if (Inventory.lookupProduct(i) == null) {
-                productView.setItems(found);
+                productTable.setItems(found);
             }
         }
 
         catch (NumberFormatException e) {
-            productView.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
+            productTable.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
         }
 
         searchBarProducts.clear();
+    }
+
+    @FXML
+    void onEnterPart(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            try {
+                int i = Integer.parseInt(searchBarParts.getText());
+                ObservableList<Part> found = FXCollections.observableArrayList();
+
+                if (Inventory.lookupPart(i) != null) {
+                    found.add(Inventory.lookupPart(i));
+                    partTable.setItems(found);
+                } else if (Inventory.lookupProduct(i) == null) {
+                    partTable.setItems(found);
+                }
+            }
+
+            catch (NumberFormatException e) {
+                partTable.setItems(Inventory.lookupPart(searchBarParts.getText()));
+            }
+
+            searchBarParts.clear();
+        }
+    }
+
+    @FXML
+    void onEnterProduct(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            try {
+                int i = Integer.parseInt(searchBarProducts.getText());
+                ObservableList<Product> found = FXCollections.observableArrayList();
+
+                if (Inventory.lookupProduct(i) != null) {
+                    found.add(Inventory.lookupProduct(i));
+                    productTable.setItems(found);
+                } else if (Inventory.lookupProduct(i) == null) {
+                    productTable.setItems(found);
+                }
+            }
+
+            catch (NumberFormatException e) {
+                productTable.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
+            }
+
+            searchBarProducts.clear();
+        }
     }
 
     public void selectTabPart() {
@@ -177,9 +236,19 @@ public class MainController implements Initializable {
         selectionModel.select(selectedProducts);
     }
 
-    public FXMLLoader partView(ActionEvent event, String view) throws IOException {
+    public FXMLLoader partMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(view));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("PartView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Inventory Management System");
+        stage.setScene(scene);
+        stage.show();
+
+        return fxmlLoader;
+    }
+    public FXMLLoader productMenu(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ProductView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
@@ -191,27 +260,22 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        colProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colProductPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colProductStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        colProductMin.setCellValueFactory(new PropertyValueFactory<>("min"));
-        colProductMax.setCellValueFactory(new PropertyValueFactory<>("max"));
+        columnProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnProductPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        columnProductStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        columnProductMin.setCellValueFactory(new PropertyValueFactory<>("min"));
+        columnProductMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
-        productView.setItems(Inventory.getAllProducts());
+        productTable.setItems(Inventory.getAllProducts());
 
-        colPartID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colPartPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colPartStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        colPartMin.setCellValueFactory(new PropertyValueFactory<>("min"));
-        colPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
+        columnPartID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnPartPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        columnPartStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        columnPartMin.setCellValueFactory(new PropertyValueFactory<>("min"));
+        columnPartMax.setCellValueFactory(new PropertyValueFactory<>("max"));
 
-        partView.setItems(Inventory.getAllParts());
-
-
-
-
-        System.out.println("Main Controller Initialized");
+        partTable.setItems(Inventory.getAllParts());
     }
 }
