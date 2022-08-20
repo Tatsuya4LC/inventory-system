@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar">
+    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar&#10;- added a try and catch block for the NumberFormatException in the searchBar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/models/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/models/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660876748525</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar&#10;- added a try and catch block for the NumberFormatException in the searchBar">
+      <created>1660883541087</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660883541087</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,6 +117,7 @@
     <MESSAGE value="v1" />
     <MESSAGE value="Search Function Added" />
     <MESSAGE value="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar" />
+    <MESSAGE value="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar&#10;- added a try and catch block for the NumberFormatException in the searchBar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search Function Added&#10;- features expanded: accepts both String and Int in the search bar&#10;- added a try and catch block for the NumberFormatException in the searchBar" />
   </component>
 </project>

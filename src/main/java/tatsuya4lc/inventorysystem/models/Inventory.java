@@ -8,7 +8,6 @@ public class Inventory {
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
     private static ObservableList<Part> foundParts = FXCollections.observableArrayList();
     private static ObservableList<Product> foundProducts = FXCollections.observableArrayList();
-
     public static void addPart(Part newPart) {
         allParts.add(newPart);
     }
@@ -23,6 +22,7 @@ public class Inventory {
             }
         } return null;
     }
+
     public static Product lookupProduct(int productId) {
         for(Product product : getAllProducts()) {
             if(product.getId() == productId) {
@@ -42,6 +42,7 @@ public class Inventory {
         }
             return foundParts;
     }
+
     public static ObservableList<Product> lookupProduct(String productName) {
         foundProducts.clear();
 
@@ -55,20 +56,25 @@ public class Inventory {
     public static void updatePart(int index, Part selectedPart) {
         getAllParts().set(index, selectedPart);
     }
+
     public static void updateProduct(int index, Product newProduct) {
         getAllProducts().set(index, newProduct);
     }
 
     public static boolean deletePart(Part selectedPart) {
-       return getAllParts().remove(selectedPart);
+       getAllParts().remove(selectedPart);
+       return true;
     }
+
     public static boolean deleteProduct(Product selectedProduct) {
-        return getAllProducts().remove(selectedProduct);
+        getAllProducts().remove(selectedProduct);
+        return true;
     }
 
     public static ObservableList<Part> getAllParts() {
         return allParts;
     }
+
     public static  ObservableList<Product> getAllProducts() {
         return allProducts;
     }

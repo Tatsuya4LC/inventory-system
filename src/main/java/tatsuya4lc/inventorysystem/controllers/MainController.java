@@ -4,15 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import tatsuya4lc.inventorysystem.MainApplication;
 import tatsuya4lc.inventorysystem.models.Inventory;
 import tatsuya4lc.inventorysystem.models.Part;
 import tatsuya4lc.inventorysystem.models.Product;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -66,8 +69,14 @@ public class MainController implements Initializable {
     private TextField searchBarProducts;
 
     @FXML
-    void onAddPart(ActionEvent event) {
+    private Tab selectedParts;
 
+    @FXML
+    private Tab selectedProducts;
+
+    @FXML
+    void onAddPart(ActionEvent event) throws IOException {
+        partView(event, "PartView.fxml");
     }
 
     @FXML
@@ -86,8 +95,17 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void onModifyPart(ActionEvent event) {
-
+    void onModifyPart(ActionEvent event) throws IOException {
+        if (partView.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setContentText("Item selection does not exist\nPlease select an item");
+            alert.showAndWait();
+        } else {
+            FXMLLoader loader = partView(event, "PartView.fxml");
+            PartController PrC = loader.getController();
+            PrC.isModifyingPart(partView.getSelectionModel().getSelectedIndex(), partView.getSelectionModel().getSelectedItem());
+        }
     }
 
     @FXML
@@ -97,68 +115,77 @@ public class MainController implements Initializable {
 
     @FXML
     void onRemovePart(ActionEvent event) {
-
+        Inventory.deletePart(partView.getSelectionModel().getSelectedItem());
+        partView.setItems(Inventory.getAllParts());
+        partView.getSelectionModel().select(null);
     }
 
     @FXML
     void onRemoveProduct(ActionEvent event) {
-
+        Inventory.deleteProduct(productView.getSelectionModel().getSelectedItem());
+        productView.setItems(Inventory.getAllProducts());
+        productView.getSelectionModel().select(null);
     }
 
     @FXML
     void onSearchParts(ActionEvent event) {
-        String search = searchBarParts.getText();
-        partView.setItems(Inventory.lookupPart(search));
-        searchBarParts.setText("");
+        try {
+            int i = Integer.parseInt(searchBarParts.getText());
+            ObservableList<Part> found = FXCollections.observableArrayList();
 
-        if (Inventory.lookupPart(search).isEmpty()) {
-            try {
-                int searchInt = Integer.parseInt(search);
-                ObservableList<Part> found = FXCollections.observableArrayList();
-
-                if (Inventory.lookupPart(searchInt) != null) {
-                    found.add(Inventory.lookupPart(searchInt));
-                    partView.setItems(found);
-                }
+            if (Inventory.lookupPart(i) != null) {
+                found.add(Inventory.lookupPart(i));
+                partView.setItems(found);
+            } else if (Inventory.lookupProduct(i) == null) {
+                partView.setItems(found);
             }
+        }
 
-            catch (NumberFormatException e) {
-                partView.setItems(Inventory.lookupPart(search));
-            }
+        catch (NumberFormatException e) {
+            partView.setItems(Inventory.lookupPart(searchBarParts.getText()));
         }
     }
 
     @FXML
     void onSearchProduct(ActionEvent event) {
-        String search = searchBarProducts.getText();
-        productView.setItems(Inventory.lookupProduct(search));
-        searchBarProducts.setText("");
+        try {
+            int i = Integer.parseInt(searchBarProducts.getText());
+            ObservableList<Product> found = FXCollections.observableArrayList();
 
-        if(Inventory.lookupProduct(search).isEmpty()) {
-            try {
-                int searchInt = Integer.parseInt(search);
-                ObservableList<Product> found = FXCollections.observableArrayList();
-
-                if (Inventory.lookupProduct(searchInt) != null) {
-                    found.add(Inventory.lookupProduct(searchInt));
-                    productView.setItems(found);
-                }
-            }
-
-            catch (NumberFormatException e) {
-                productView.setItems(Inventory.lookupProduct(search));
+            if (Inventory.lookupProduct(i) != null) {
+                found.add(Inventory.lookupProduct(i));
+                productView.setItems(found);
+            } else if (Inventory.lookupProduct(i) == null) {
+                productView.setItems(found);
             }
         }
+
+        catch (NumberFormatException e) {
+            productView.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
+        }
+
+        searchBarProducts.clear();
     }
 
-    @FXML
-    void onSelectParts(ActionEvent event) {
-        productView.setItems(Inventory.getAllProducts());
+    public void selectTabPart() {
+        SingleSelectionModel<Tab> selectionModel = selectedParts.getTabPane().getSelectionModel();
+        selectionModel.select(selectedParts);
     }
 
-    @FXML
-    void onSelectProducts(ActionEvent event) {
-        partView.setItems(Inventory.getAllParts());
+    public void selectTabProduct() {
+        SingleSelectionModel<Tab> selectionModel = selectedProducts.getTabPane().getSelectionModel();
+        selectionModel.select(selectedProducts);
+    }
+
+    public FXMLLoader partView(ActionEvent event, String view) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(view));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Inventory Management System");
+        stage.setScene(scene);
+        stage.show();
+
+        return fxmlLoader;
     }
 
     @Override
