@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"tasuya4lc.inventorysystem","l":"tatsuya4lc.inventorysystem"},{"m":"tasuya4lc.inventorysystem","l":"tatsuya4lc.inventorysystem.controllers"},{"m":"tasuya4lc.inventorysystem","l":"tatsuya4lc.inventorysystem.models"}];updateSearchResults();

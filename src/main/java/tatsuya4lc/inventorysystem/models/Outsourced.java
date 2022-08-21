@@ -1,5 +1,11 @@
 package tatsuya4lc.inventorysystem.models;
 
+/**
+ *The class for OutSourced object.
+ * This class contains an attribute companyName for OutSourced objects
+ *
+ * @author Tristan Lozano
+ */
 public class Outsourced extends Part {
     private String companyName;
 
@@ -8,10 +14,18 @@ public class Outsourced extends Part {
         this.companyName = companyName;
     }
 
+    /**
+     *
+     * @return the companyName
+     */
     public String getCompanyName() {
         return companyName;
     }
 
+    /**
+     *
+     * @param companyName the companyName to set
+     */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }

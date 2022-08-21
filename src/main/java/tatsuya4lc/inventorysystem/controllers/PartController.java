@@ -11,10 +11,19 @@ import tatsuya4lc.inventorysystem.models.Part;
 
 import java.util.Objects;
 
+/**
+ * Controller for the Part window.
+ * This class provides logic for the PartView.fxml
+ *
+ * @author Tristan Lozano
+ */
 public class PartController {
-    Part partHolder;
-    private int partToModifyIndex;
+    //class variable to hold Part object
+    private Part partHolder;
+    //class variable initializes as boolean with false value
     private boolean updatePart = false;
+    //class variable to hold an integer
+    private int partToModifyIndex;
 
     @FXML
     private RadioButton inHouse;
@@ -52,18 +61,36 @@ public class PartController {
     @FXML
     private ToggleGroup partSource;
 
+    /**
+     * method for In-House radio button in Part window.
+     * changes label and text prompt when selected
+     */
     @FXML
     void optionInHouse() {
         labelPartInOut.setText("Machine ID");
         textPartInOut.setPromptText("Enter Machine ID");
     }
 
+    /**
+     * method for OutSourced radio button in Part window.
+     * changes label and text prompt when selected
+     */
     @FXML
     void optionOutSourced() {
         labelPartInOut.setText("Company Name");
         textPartInOut.setPromptText("Enter Company Name");
     }
 
+    /**
+     * method for save button in Part window.
+     * calls for placePart() method
+     * checks if placePart() is true
+     * checks if adding or modifying
+     * adds or updates Part to the observable list allParts
+     * calls for a method from the MainApplication to go back to the main window
+     *
+     * @param event the event that the button was pressed
+     */
     @FXML
     void onPartSave(ActionEvent event) {
         if (placePart()) {
@@ -76,24 +103,32 @@ public class PartController {
         }
     }
 
+    /**
+     * method for cancel button in Part window.
+     * calls for a method from the MainApplication to go back to the main window
+     *
+     * @param event the event that the button was pressed
+     */
     @FXML
     void onPartCancel(ActionEvent event) {
         MainApplication.changeMenu(event, 1, 4, null, null);
     }
 
-    public int partID(){
-        int i = 1;
-
-        for(Part part : Inventory.getAllParts()) {
-            if(part.getId() == i) {
-                i++;
-            }
-        }
-
-        return i;
-    }
-
-    public boolean placePart() {
+    /**
+     * method to getText() from the text fields in the Part window.
+     * checks for logical errors such as no input in the text field/s,
+     * stock is outside min/max range and min is greater than max
+     * try-catch block to test for number format to prevent runtime error
+     * throws NumberFormatException and changes error to true
+     * changes PromptText in the text fields to inform user of error
+     * gives an error dialog and informs that there was an error if error variable changes to true
+     * checks if Part object is of InHouse or OutSourced class
+     * checks if adding or modifying Part when error is false
+     * then creates a new Part object assigned to partHolder using the attributes from text fields and partID()
+     *
+     * @return boolean
+     */
+    private boolean placePart() {
         boolean error = false;
         String name = textPartName.getText();
         String companyName = textPartInOut.getText();
@@ -148,8 +183,8 @@ public class PartController {
         if (error) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Expected Input Mismatch");
-            alert.setHeaderText("Incorrect Input Type");
-            alert.setContentText("Please enter a valid value for each field with \"!\" \n cannot be empty");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid value for each field with \"!\" \ncannot be empty");
             alert.showAndWait();
 
             return false;
@@ -157,22 +192,22 @@ public class PartController {
         } else {
             if (min > max) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Logical Error");
-                alert.setContentText("Minimum cannot be greater than Maximum \n Minimum > Maximum");
+                alert.setTitle("Logical Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Minimum cannot be greater than Maximum \nMinimum > Maximum");
                 alert.showAndWait();
 
                 return false;
 
             } else if (stock < min || stock > max) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Logical Error");
+                alert.setTitle("Logical Error");
+                alert.setHeaderText("null");
 
                 if (stock < min) {
-                    alert.setContentText("Stock is out of range \n Stock < Minimum");
+                    alert.setContentText("Stock is out of range \nStock < Minimum");
                 } else {
-                    alert.setContentText("Stock is out of range \n Stock > Maximum");
+                    alert.setContentText("Stock is out of range \nStock > Maximum");
                 }
 
                 alert.showAndWait();
@@ -183,13 +218,13 @@ public class PartController {
                 if (updatePart) {
                     partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
                 } else {
-                    partHolder = new InHouse(partID(), name, price, stock, min, max, machineId);
+                    partHolder = new InHouse(MainApplication.generateID(0), name, price, stock, min, max, machineId);
                 }
             } else {
                 if (updatePart) {
                     partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, companyName);
                 } else {
-                    partHolder = new Outsourced(partID(), name, price, stock, min, max, companyName);
+                    partHolder = new Outsourced(MainApplication.generateID(0), name, price, stock, min, max, companyName);
                 }
             }
         }
@@ -197,6 +232,13 @@ public class PartController {
         return true;
     }
 
+    /**
+     * method for modify button to call from the main window to send value.
+     * checks if Part object is of InHouse or OutSourced and display window appropriately
+     *
+     * @param index the index to send from MainController
+     * @param part the Part object to send from the MainController
+     */
     public void isModifyingPart(int index, Part part) {
         partToModifyIndex = index;
         updatePart = true;

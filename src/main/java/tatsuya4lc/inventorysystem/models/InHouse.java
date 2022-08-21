@@ -1,5 +1,11 @@
 package tatsuya4lc.inventorysystem.models;
 
+/**
+ * The class for InHouse objects.
+ * This class contains an attribute machineId for InHouse objects
+ *
+ * @author Tristan Lozano
+ */
 public class InHouse extends Part {
     private int machineId;
 
@@ -8,10 +14,18 @@ public class InHouse extends Part {
         this.machineId = machineId;
     }
 
+    /**
+     *
+     * @return the machineId
+     */
     public int getMachineId() {
         return machineId;
     }
 
+    /**
+     *
+     * @param machineId the machineId to set
+     */
     public void setMachineId(int machineId) {
         this.machineId = machineId;
     }

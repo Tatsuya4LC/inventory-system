@@ -12,184 +12,126 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane style="-fx-alignment: CENTER;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="tatsuya4lc.inventorysystem.controllers.MainController">
-   <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-               AnchorPane.topAnchor="0.0">
+<AnchorPane style="-fx-alignment: CENTER;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.MainController">
+   <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-         <AnchorPane maxHeight="406.0" maxWidth="639.0" minHeight="406.0" minWidth="639.0" prefHeight="406.0"
-                     prefWidth="639.0" BorderPane.alignment="CENTER">
-            <BorderPane maxHeight="406.0" maxWidth="639.0" minHeight="406.0" minWidth="639.0" prefHeight="406.0"
-                        prefWidth="639.0">
+         <AnchorPane maxHeight="406.0" maxWidth="639.0" minHeight="406.0" minWidth="639.0" prefHeight="406.0" prefWidth="639.0" BorderPane.alignment="CENTER">
+            <BorderPane maxHeight="406.0" maxWidth="639.0" minHeight="406.0" minWidth="639.0" prefHeight="406.0" prefWidth="639.0">
                <center>
-                  <AnchorPane maxHeight="400.0" maxWidth="627.0" minHeight="400.0" minWidth="627.0"
-                              prefHeight="400.0" prefWidth="627.0" BorderPane.alignment="CENTER">
-                     <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE"
-                              AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane maxHeight="400.0" maxWidth="627.0" minHeight="400.0" minWidth="627.0" prefHeight="400.0" prefWidth="627.0" BorderPane.alignment="CENTER">
+                     <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <Tab fx:id="selectedProducts" text="Products">
                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                              <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0"
-                                    AnchorPane.topAnchor="6.0">
+                              <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="6.0">
                                  <HBox spacing="10.0">
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onAddProduct" prefHeight="25.0" prefWidth="60.0" text="Add"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onModifyProduct" prefHeight="25.0" prefWidth="60.0"
-                                            text="Modify"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onDeleteProduct" prefHeight="25.0" prefWidth="60.0"
-                                            text="Delete"/>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAddProduct" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onModifyProduct" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onDeleteProduct" prefHeight="25.0" prefWidth="60.0" text="Delete" />
                                  </HBox>
                                  <HBox spacing="10.0">
-                                    <TextField fx:id="searchBarProducts" alignment="CENTER"
-                                               onKeyPressed="#onEnterProduct" prefHeight="25.0" prefWidth="176.0"
-                                               promptText="ID or Name"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onSearchProduct" prefHeight="25.0" prefWidth="60.0"
-                                            text="Search">
+                                    <TextField fx:id="searchBarProducts" alignment="CENTER" onKeyPressed="#onEnterProduct" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchProduct" prefHeight="25.0" prefWidth="60.0" text="Search">
                                        <font>
-                                          <Font size="11.0"/>
+                                          <Font size="11.0" />
                                        </font>
                                     </Button>
                                  </HBox>
                               </HBox>
-                              <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0"
-                                          AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0"
-                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                              <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                                  <top>
-                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                                  </top>
                                  <bottom>
-                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                                  </bottom>
                                  <right>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0"
-                                               BorderPane.alignment="CENTER"/>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                                  </right>
                                  <center>
-                                    <TableView fx:id="productTable" prefHeight="200.0" prefWidth="615.0"
-                                               BorderPane.alignment="CENTER">
+                                    <TableView fx:id="productTable" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
                                        <columns>
-                                          <TableColumn fx:id="columnProductID" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Product ID"/>
-                                          <TableColumn fx:id="columnProductName" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Product Name"/>
-                                          <TableColumn fx:id="columnProductPrice" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Price"/>
-                                          <TableColumn fx:id="columnProductStock" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Stock"/>
-                                          <TableColumn fx:id="columnProductMin" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Min"/>
-                                          <TableColumn fx:id="columnProductMax" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Max"/>
+                                          <TableColumn fx:id="columnProductID" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Product ID" />
+                                          <TableColumn fx:id="columnProductName" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Product Name" />
+                                          <TableColumn fx:id="columnProductPrice" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Price" />
+                                          <TableColumn fx:id="columnProductStock" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Stock" />
+                                          <TableColumn fx:id="columnProductMin" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Min" />
+                                          <TableColumn fx:id="columnProductMax" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Max" />
                                        </columns>
                                     </TableView>
                                  </center>
                                  <left>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0"
-                                               BorderPane.alignment="CENTER"/>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                                  </left>
                               </BorderPane>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="537.0" layoutY="330.0"
-                                      maxHeight="25.0" maxWidth="40.0" minHeight="25.0" minWidth="40.0"
-                                      mnemonicParsing="false" onAction="#onExitProduct" prefHeight="25.0"
-                                      prefWidth="40.0" text="Exit" AnchorPane.bottomAnchor="9.0"
-                                      AnchorPane.rightAnchor="30.0"/>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="336.0" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#onExitProduct" prefHeight="30.0" prefWidth="100.0" text="Exit" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="30.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Button>
                            </AnchorPane>
                         </Tab>
                         <Tab fx:id="selectedParts" text="Parts">
                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                              <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0"
-                                    AnchorPane.topAnchor="6.0">
+                              <HBox layoutX="6.0" layoutY="6.0" spacing="120.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="6.0">
                                  <HBox spacing="10.0">
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onAddPart" prefHeight="25.0" prefWidth="60.0" text="Add"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onModifyPart" prefHeight="25.0" prefWidth="60.0"
-                                            text="Modify"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onDeletePart" prefHeight="25.0" prefWidth="60.0"
-                                            text="Delete"/>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAddPart" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onModifyPart" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onDeletePart" prefHeight="25.0" prefWidth="60.0" text="Delete" />
                                  </HBox>
                                  <HBox spacing="10.0">
-                                    <TextField fx:id="searchBarParts" alignment="CENTER" onKeyPressed="#onEnterPart"
-                                               prefHeight="25.0" prefWidth="176.0" promptText="ID or Name"/>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0"
-                                            maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false"
-                                            onAction="#onSearchParts" prefHeight="25.0" prefWidth="60.0"
-                                            text="Search">
+                                    <TextField fx:id="searchBarParts" alignment="CENTER" onKeyPressed="#onEnterPart" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchParts" prefHeight="25.0" prefWidth="60.0" text="Search">
                                        <font>
-                                          <Font size="11.0"/>
+                                          <Font size="11.0" />
                                        </font>
                                     </Button>
                                  </HBox>
                               </HBox>
-                              <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0"
-                                          AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0"
-                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                              <BorderPane layoutY="27.0" prefHeight="300.0" prefWidth="627.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                                  <top>
-                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                                  </top>
                                  <bottom>
-                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                                    <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                                  </bottom>
                                  <right>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0"
-                                               BorderPane.alignment="CENTER"/>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                                  </right>
                                  <center>
-                                    <TableView fx:id="partTable" prefHeight="200.0" prefWidth="615.0"
-                                               BorderPane.alignment="CENTER">
+                                    <TableView fx:id="partTable" prefHeight="200.0" prefWidth="615.0" BorderPane.alignment="CENTER">
                                        <columns>
-                                          <TableColumn fx:id="columnPartID" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Part ID"/>
-                                          <TableColumn fx:id="columnPartName" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Part Name"/>
-                                          <TableColumn fx:id="columnPartPrice" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Price / Cost"/>
-                                          <TableColumn fx:id="columnPartStock" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Stock"/>
-                                          <TableColumn fx:id="columnPartMin" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Min"/>
-                                          <TableColumn fx:id="columnPartMax" prefWidth="100.0"
-                                                       style="-fx-alignment: CENTER;" text="Max"/>
+                                          <TableColumn fx:id="columnPartID" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part ID" />
+                                          <TableColumn fx:id="columnPartName" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part Name" />
+                                          <TableColumn fx:id="columnPartPrice" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Price / Cost" />
+                                          <TableColumn fx:id="columnPartStock" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Stock" />
+                                          <TableColumn fx:id="columnPartMin" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Min" />
+                                          <TableColumn fx:id="columnPartMax" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Max" />
                                        </columns>
                                     </TableView>
                                  </center>
                                  <left>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0"
-                                               BorderPane.alignment="CENTER"/>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                                  </left>
                               </BorderPane>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="537.0" layoutY="330.0"
-                                      maxHeight="25.0" maxWidth="40.0" minHeight="25.0" minWidth="40.0"
-                                      mnemonicParsing="false" onAction="#onExitPart" prefHeight="25.0"
-                                      prefWidth="40.0" text="Exit" AnchorPane.bottomAnchor="9.0"
-                                      AnchorPane.rightAnchor="30.0"/>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="537.0" layoutY="330.0" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#onExitPart" prefHeight="30.0" prefWidth="100.0" text="Exit" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="30.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Button>
                            </AnchorPane>
                         </Tab>
                      </TabPane>
                   </AnchorPane>
                </center>
                <top>
-                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                </top>
                <bottom>
-                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                </bottom>
                <left>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER"/>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER"/>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
          </AnchorPane>
