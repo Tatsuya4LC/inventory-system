@@ -9,11 +9,12 @@ import tatsuya4lc.inventorysystem.models.Inventory;
 import tatsuya4lc.inventorysystem.models.Outsourced;
 import tatsuya4lc.inventorysystem.models.Part;
 
+import java.util.Objects;
+
 public class PartController {
     Part partHolder;
     private int partToModifyIndex;
     private boolean updatePart = false;
-    private boolean inputError, logicError;
 
     @FXML
     private RadioButton inHouse;
@@ -65,23 +66,19 @@ public class PartController {
 
     @FXML
     void onPartSave(ActionEvent event) {
-        placePart();
-
-        if (inputError || logicError) {
-            //catches error and does nothing
-        } else {
+        if (placePart()) {
             if (updatePart) {
                 Inventory.updatePart(partToModifyIndex, partHolder);
             } else {
                 Inventory.addPart(partHolder);
             }
-            MainApplication.changeMenu(event, 1, 4, null);
+            MainApplication.changeMenu(event, 1, 4, null, null);
         }
     }
 
     @FXML
     void onPartCancel(ActionEvent event) {
-        MainApplication.changeMenu(event, 1, 4, null);
+        MainApplication.changeMenu(event, 1, 4, null, null);
     }
 
     public int partID(){
@@ -96,18 +93,22 @@ public class PartController {
         return i;
     }
 
-    public void placePart() {
-        inputError = false;
-        logicError = false;
+    public boolean placePart() {
+        boolean error = false;
         String name = textPartName.getText();
         String companyName = textPartInOut.getText();
         double price = 0.0;
         int stock = 0, max = 0, min = 0, machineId =0;
 
+        if (Objects.equals(name, "")) {
+            error = true;
+            textPartName.setPromptText("! cannot be empty");
+        }
+
         try {
             price = Double.parseDouble(textPartPrice.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textPartPrice.setPromptText("! Expects a number");
             textPartPrice.clear();
         }
@@ -115,7 +116,7 @@ public class PartController {
         try {
             stock = Integer.parseInt(textPartStock.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textPartStock.setPromptText("! Expects a number");
             textPartStock.clear();
         }
@@ -123,7 +124,7 @@ public class PartController {
         try {
             max = Integer.parseInt(textPartMax.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textPartMax.setPromptText("! Expects a number");
             textPartMax.clear();
         }
@@ -131,7 +132,7 @@ public class PartController {
         try {
             min = Integer.parseInt(textPartMin.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textPartMin.setPromptText("! Expects a number");
             textPartMin.clear();
         }
@@ -139,27 +140,31 @@ public class PartController {
         try {
             machineId = Integer.parseInt(textPartInOut.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textPartInOut.setPromptText("! Expects a number");
             textPartInOut.clear();
         }
 
-        if (inputError) {
+        if (error) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Expected Input Mismatch");
             alert.setHeaderText("Incorrect Input Type");
             alert.setContentText("Please enter a valid value for each field with \"!\" \n cannot be empty");
             alert.showAndWait();
+
+            return false;
+
         } else {
             if (min > max) {
-                logicError = true;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Logical Error");
                 alert.setContentText("Minimum cannot be greater than Maximum \n Minimum > Maximum");
                 alert.showAndWait();
+
+                return false;
+
             } else if (stock < min || stock > max) {
-                logicError = true;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Logical Error");
@@ -171,6 +176,7 @@ public class PartController {
                 }
 
                 alert.showAndWait();
+                return false;
             }
 
             if (inHouse.isSelected()) {
@@ -187,6 +193,8 @@ public class PartController {
                 }
             }
         }
+
+        return true;
     }
 
     public void isModifyingPart(int index, Part part) {

@@ -13,12 +13,13 @@ import tatsuya4lc.inventorysystem.models.Inventory;
 import tatsuya4lc.inventorysystem.models.Part;
 import tatsuya4lc.inventorysystem.models.Product;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class ProductController {
     private final ObservableList<Part> associatedPartsList = FXCollections.observableArrayList();
     Product productHolder;
-    private boolean updateProduct = false, inputError, logicError;
+    private boolean updateProduct = false;
     private int productToModifyIndex;
 
     @FXML
@@ -87,6 +88,9 @@ public class ProductController {
     @FXML
     private Label windowHeaderProduct;
 
+    public ProductController() {
+    }
+
     @FXML
     void onAddAssociatedPart(ActionEvent event) {
         if (!productPartTable.getSelectionModel().isEmpty()) {
@@ -122,16 +126,12 @@ public class ProductController {
 
     @FXML
     void onProductCancel(ActionEvent event) {
-        MainApplication.changeMenu(event, 1, 0, null);
+        MainApplication.changeMenu(event, 1, 0, null, null);
     }
 
     @FXML
     void onProductSave(ActionEvent event) {
-        placeProduct();
-
-        if (inputError || logicError) {
-            //catches error and does nothing
-        } else {
+        if (placeProduct()) {
             if (updateProduct) {
                 for (Part part : associatedPartsList) {
                     productHolder.addAssociatedPart(part);
@@ -145,7 +145,7 @@ public class ProductController {
 
                 Inventory.addProduct(productHolder);
             }
-            MainApplication.changeMenu(event, 1, 0, null);
+            MainApplication.changeMenu(event, 1, 0, null, null);
         }
     }
 
@@ -228,57 +228,65 @@ public class ProductController {
         return i;
     }
 
-    public void placeProduct() {
-        inputError = false;
-        logicError = false;
+    public boolean placeProduct() {
+        boolean error = false;
         String name = textProductName.getText();
         double price = 0.0;
         int stock = 0, min = 0, max = 0;
 
+        if (Objects.equals(name, "")) {
+            error = true;
+            textProductName.setPromptText("! cannot be empty");
+        }
+
         try {
             price = Double.parseDouble(textProductPrice.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textProductPrice.setPromptText("! Expects a number");
         }
 
         try {
             stock = Integer.parseInt(textProductStock.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textProductStock.setPromptText("! Expects a number");
         }
 
         try {
             min = Integer.parseInt(textProductMin.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textProductMin.setPromptText("! Expects a number");
         }
 
         try {
             max = Integer.parseInt(textProductMax.getText());
         } catch (NumberFormatException e) {
-            inputError = true;
+            error = true;
             textProductMax.setPromptText("! Expects a number");
         }
 
-        if (inputError) {
+        if (error) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Expected Input Mismatch");
             alert.setHeaderText("Incorrect Input Type");
             alert.setContentText("Please enter a valid value for each field with \"!\" \n cannot be empty");
             alert.showAndWait();
+
+            return false;
+
         } else {
             if (min > max) {
-                logicError = true;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Logical Error");
                 alert.setContentText("Minimum cannot be greater than Maximum \n Minimum > Maximum");
                 alert.showAndWait();
+
+                return false;
+
             } else if (stock < min || stock > max) {
-                logicError = true;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Logical Error");
@@ -290,6 +298,7 @@ public class ProductController {
                 }
 
                 alert.showAndWait();
+                return false;
             }
 
             if (updateProduct) {
@@ -298,6 +307,8 @@ public class ProductController {
                 productHolder = new Product(productID(), name, price, stock, min, max);
             }
         }
+
+        return true;
     }
 
     public void isModifyingProduct(int index, Product product) {

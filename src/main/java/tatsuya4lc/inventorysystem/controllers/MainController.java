@@ -68,22 +68,22 @@ public class MainController implements Initializable {
     private TextField searchBarProducts;
 
     @FXML
-    private Tab selectedParts;
+    public Tab selectedParts;
 
     @FXML
     private Tab selectedProducts;
 
     @FXML
-    private TabPane tabPane;
+    public TabPane tabPane;
 
     @FXML
     void onAddPart(ActionEvent event) {
-        MainApplication.changeMenu(event, 2, 0, null);
+        MainApplication.changeMenu(event, 2, 0, null, null);
     }
 
     @FXML
     void onAddProduct(ActionEvent event) {
-        MainApplication.changeMenu(event, 3, 3, null);
+        MainApplication.changeMenu(event, 3, 3, null, null);
     }
 
     @FXML
@@ -99,14 +99,14 @@ public class MainController implements Initializable {
     @FXML
     void onModifyPart(ActionEvent event) {
         if (!partTable.getSelectionModel().isEmpty()) {
-            MainApplication.changeMenu(event, 2, 1, partTable);
+            MainApplication.changeMenu(event, 2, 1, partTable, null);
         }
     }
 
     @FXML
     void onModifyProduct(ActionEvent event) {
         if (!productTable.getSelectionModel().isEmpty()) {
-            MainApplication.changeMenu(event, 3, 2, productTable);
+            MainApplication.changeMenu(event, 3, 2, null, productTable);
         }
     }
 
@@ -259,11 +259,6 @@ public class MainController implements Initializable {
         }
     }
 
-    public void selectTabPart() {
-        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-        selectionModel.select(selectedParts);
-    }
-
     public void setMainView() {
         columnProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -287,6 +282,5 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setMainView();
-        System.out.println("Initialization");
     }
 }

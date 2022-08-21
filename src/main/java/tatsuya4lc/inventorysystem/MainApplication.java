@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import tatsuya4lc.inventorysystem.controllers.MainController;
@@ -24,7 +26,7 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public static void changeMenu(ActionEvent event, int x, int y, TableView tableView) {
+    public static void changeMenu(ActionEvent event, int x, int y, TableView<Part> table1, TableView<Product> table2) {
         URL url = null;
         switch (x) {
             case 1 -> url = MainApplication.class.getResource("MainView.fxml");
@@ -43,11 +45,11 @@ public class MainApplication extends Application {
             switch (y) {
                 case 1 -> {
                     PartController PaC = mainLoader.getController();
-                    PaC.isModifyingPart(tableView.getSelectionModel().getSelectedIndex(), (Part) tableView.getSelectionModel().getSelectedItem());
+                    PaC.isModifyingPart(table1.getSelectionModel().getSelectedIndex(), table1.getSelectionModel().getSelectedItem());
                 }
                 case 2 -> {
                     ProductController PrC = mainLoader.getController();
-                    PrC.isModifyingProduct(tableView.getSelectionModel().getSelectedIndex(), (Product) tableView.getSelectionModel().getSelectedItem());
+                    PrC.isModifyingProduct(table2.getSelectionModel().getSelectedIndex(), table2.getSelectionModel().getSelectedItem());
                     PrC.newProduct();
                 }
                 case 3 -> {
@@ -56,7 +58,8 @@ public class MainApplication extends Application {
                 }
                 case 4 -> {
                     MainController MaC = mainLoader.getController();
-                    MaC.selectTabPart();
+                    SingleSelectionModel<Tab> selectionModel = MaC.tabPane.getSelectionModel();
+                    selectionModel.select(MaC.selectedParts);
                 }
             }
         } catch (IOException e) {
