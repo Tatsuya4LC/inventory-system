@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0.9">
-      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" afterDir="false" />
+    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0.9.0.0.0.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/ProductView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/ProductView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +38,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yugen/Downloads/openjfx-18.0.2_windows-x64_bin-sdk/javafx-sdk-18.0.2/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.445977&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Yugen/IdeaProjects/inventory-system",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.445977"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -139,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661068269356</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="version 0.9.0.0.0.1">
+      <created>1661068959262</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1661068959262</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +185,8 @@
     <MESSAGE value="version 0.1" />
     <MESSAGE value="version 0.7" />
     <MESSAGE value="version 0.9" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0.9" />
+    <MESSAGE value="version 0.9.0.0.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.9.0.0.0.1" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

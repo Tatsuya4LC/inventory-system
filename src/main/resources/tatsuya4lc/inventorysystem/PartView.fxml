@@ -15,143 +15,161 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="467.0" maxWidth="412.0" minHeight="467.0" minWidth="412.0" prefHeight="467.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatsuya4lc.inventorysystem.controllers.PartController">
-   <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <AnchorPane maxHeight="467.0" maxWidth="412.0" minHeight="467.0" minWidth="412.0" prefHeight="467.0" prefWidth="412.0">
-               <children>
-                  <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="447.0" maxWidth="392.0" minHeight="447.0" minWidth="392.0" prefHeight="447.0" prefWidth="392.0">
-                     <top>
-                        <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
-                     </top>
-                     <bottom>
-                        <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
-                     </bottom>
-                     <left>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
-                     </right>
-                     <center>
-                        <AnchorPane>
-                           <children>
-                              <GridPane layoutY="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="240.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                    <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                    <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                    <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                  <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                  <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                  <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
-                                </rowConstraints>
-                                 <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="ID" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="Price / Cost" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="Stock" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="Minimum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
-                                       <children>
-                                          <Label prefHeight="34.0" prefWidth="140.0" text="Maximum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
-                                       <children>
-                                          <Label fx:id="labelPartInOut" prefHeight="34.0" prefWidth="80.0" text="Machine ID" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                       <children>
-                                          <TextField fx:id="textPartID" alignment="CENTER" disable="true" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" text="Auto Generated" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <children>
-                                          <TextField fx:id="textPartName" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Part Name" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <children>
-                                          <TextField fx:id="textPartPrice" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Price" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <children>
-                                          <TextField fx:id="textPartStock" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Stock Level" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <children>
-                                          <TextField fx:id="textPartMin" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Min Amount" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                       <children>
-                                          <TextField fx:id="textPartMax" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Max Amount" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                       <children>
-                                          <TextField fx:id="textPartInOut" alignment="CENTER" maxHeight="25.0" maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter Machine ID" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </GridPane>
-                              <Label fx:id="windowHeaderPart" layoutX="20.0" layoutY="14.0" maxHeight="40.0" maxWidth="140.0" minHeight="27.0" minWidth="101.0" prefHeight="40.0" prefWidth="140.0" text="Add Part" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="14.0">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <VBox layoutX="189.0" layoutY="41.0" spacing="10.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="41.0">
-                                 <children>
-                                    <RadioButton fx:id="inHouse" mnemonicParsing="false" onAction="#optionInHouse" selected="true" text="In-House">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="partSource" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="outSourced" mnemonicParsing="false" onAction="#optionOutSourced" text="Outsourced" toggleGroup="$partSource" />
-                                 </children>
-                              </VBox>
-                              <HBox layoutX="231.0" layoutY="376.0" spacing="30.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                                 <children>
-                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onPartSave" prefHeight="25.0" prefWidth="60.0" text="Save" />
-                                    <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onPartCancel" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
-                                 </children>
-                              </HBox>
-                           </children>
+<AnchorPane maxHeight="467.0" maxWidth="412.0" minHeight="467.0" minWidth="412.0" prefHeight="467.0" prefWidth="412.0"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tatsuya4lc.inventorysystem.controllers.PartController">
+   <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+      <center>
+         <AnchorPane maxHeight="467.0" maxWidth="412.0" minHeight="467.0" minWidth="412.0" prefHeight="467.0"
+                     prefWidth="412.0">
+            <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="447.0" maxWidth="392.0" minHeight="447.0"
+                        minWidth="392.0" prefHeight="447.0" prefWidth="392.0">
+               <top>
+                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+               </top>
+               <bottom>
+                  <Separator prefWidth="200.0" BorderPane.alignment="CENTER"/>
+               </bottom>
+               <left>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER"/>
+               </left>
+               <right>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER"/>
+               </right>
+               <center>
+                  <AnchorPane>
+                     <GridPane layoutY="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+                           <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="240.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                           <RowConstraints minHeight="10.0" prefHeight="34.0" vgrow="NEVER"/>
+                        </rowConstraints>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="ID"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                         </AnchorPane>
-                     </center>
-                  </BorderPane>
-               </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
-   </children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="Name"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="Price / Cost"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="Stock"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="Minimum"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                           <Label prefHeight="34.0" prefWidth="140.0" text="Maximum"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+                           <Label fx:id="labelPartInOut" prefHeight="34.0" prefWidth="80.0"
+                                  text="Machine ID" AnchorPane.bottomAnchor="0.0"
+                                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                  AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <TextField fx:id="textPartID" alignment="CENTER" disable="true" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" text="Auto Generated" AnchorPane.bottomAnchor="7.0"
+                                      AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="1">
+                           <TextField fx:id="textPartName" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Part Name"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="2">
+                           <TextField fx:id="textPartPrice" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Price"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="3">
+                           <TextField fx:id="textPartStock" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Stock Level"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="4">
+                           <TextField fx:id="textPartMin" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Min Amount"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="5">
+                           <TextField fx:id="textPartMax" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Max Amount"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="6">
+                           <TextField fx:id="textPartInOut" alignment="CENTER" maxHeight="25.0"
+                                      maxWidth="240.0" minHeight="25.0" minWidth="240.0" prefHeight="25.0"
+                                      prefWidth="240.0" promptText="Enter Machine ID"
+                                      AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="7.0"/>
+                        </AnchorPane>
+                     </GridPane>
+                     <Label fx:id="windowHeaderPart" layoutX="20.0" layoutY="14.0" maxHeight="40.0"
+                            maxWidth="140.0" minHeight="27.0" minWidth="101.0" prefHeight="40.0" prefWidth="140.0"
+                            text="Add Part" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="220.0"
+                            AnchorPane.topAnchor="14.0">
+                        <font>
+                           <Font name="System Bold" size="24.0"/>
+                        </font>
+                     </Label>
+                     <VBox layoutX="189.0" layoutY="41.0" spacing="10.0" AnchorPane.leftAnchor="189.0"
+                           AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="41.0">
+                        <RadioButton fx:id="inHouse" mnemonicParsing="false" onAction="#optionInHouse"
+                                     selected="true" text="In-House">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="partSource"/>
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="outSourced" mnemonicParsing="false" onAction="#optionOutSourced"
+                                     text="Outsourced" toggleGroup="$partSource"/>
+                     </VBox>
+                     <HBox layoutX="231.0" layoutY="376.0" spacing="30.0" AnchorPane.bottomAnchor="20.0"
+                           AnchorPane.rightAnchor="20.0">
+                        <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0"
+                                mnemonicParsing="false" onAction="#onPartSave" prefHeight="25.0"
+                                prefWidth="60.0" text="Save"/>
+                        <Button maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0"
+                                mnemonicParsing="false" onAction="#onPartCancel" prefHeight="25.0"
+                                prefWidth="60.0" text="Cancel"/>
+                     </HBox>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </AnchorPane>
+      </center>
+   </BorderPane>
 </AnchorPane>
