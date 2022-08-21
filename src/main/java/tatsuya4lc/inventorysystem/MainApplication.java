@@ -1,15 +1,19 @@
 package tatsuya4lc.inventorysystem;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import tatsuya4lc.inventorysystem.models.InHouse;
-import tatsuya4lc.inventorysystem.models.Inventory;
-import tatsuya4lc.inventorysystem.models.Outsourced;
-import tatsuya4lc.inventorysystem.models.Product;
+import tatsuya4lc.inventorysystem.controllers.MainController;
+import tatsuya4lc.inventorysystem.controllers.PartController;
+import tatsuya4lc.inventorysystem.controllers.ProductController;
+import tatsuya4lc.inventorysystem.models.*;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class MainApplication extends Application {
     @Override
@@ -19,6 +23,45 @@ public class MainApplication extends Application {
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
+    }
+    public static void changeMenu(ActionEvent event, int x, int y, TableView tableView) {
+        URL url = null;
+        switch (x) {
+            case 1 -> url = MainApplication.class.getResource("MainView.fxml");
+            case 2 -> url = MainApplication.class.getResource("PartView.fxml");
+            case 3 -> url = MainApplication.class.getResource("ProductView.fxml");
+        }
+
+        try {
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader mainLoader = new FXMLLoader(url);
+            Scene scene = new Scene(mainLoader.load());
+            stage.setTitle("Inventory Management System");
+            stage.setScene(scene);
+            stage.show();
+
+            switch (y) {
+                case 1 -> {
+                    PartController PaC = mainLoader.getController();
+                    PaC.isModifyingPart(tableView.getSelectionModel().getSelectedIndex(), (Part) tableView.getSelectionModel().getSelectedItem());
+                }
+                case 2 -> {
+                    ProductController PrC = mainLoader.getController();
+                    PrC.isModifyingProduct(tableView.getSelectionModel().getSelectedIndex(), (Product) tableView.getSelectionModel().getSelectedItem());
+                    PrC.newProduct();
+                }
+                case 3 -> {
+                    ProductController PrC = mainLoader.getController();
+                    PrC.newProduct();
+                }
+                case 4 -> {
+                    MainController MaC = mainLoader.getController();
+                    MaC.selectTabPart();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void main(String[] args) {

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0.1" />
+    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 0.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/PartView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/ProductView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/ProductView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661024702876</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="version 0.1">
+      <created>1661024765631</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661024765631</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,5 +168,12 @@
     <MESSAGE value="version 0" />
     <MESSAGE value="version 0.1" />
     <option name="LAST_COMMIT_MESSAGE" value="version 0.1" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="tatsuya4lc.inventorysystem.models.Product" memberName="associatedParts" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

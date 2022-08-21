@@ -2,22 +2,18 @@ package tatsuya4lc.inventorysystem.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import tatsuya4lc.inventorysystem.MainApplication;
 import tatsuya4lc.inventorysystem.models.InHouse;
 import tatsuya4lc.inventorysystem.models.Inventory;
 import tatsuya4lc.inventorysystem.models.Outsourced;
 import tatsuya4lc.inventorysystem.models.Part;
 
-import java.io.IOException;
-
 public class PartController {
     Part partHolder;
     private int partToModifyIndex;
     private boolean updatePart = false;
+    private boolean inputError, logicError;
 
     @FXML
     private RadioButton inHouse;
@@ -68,61 +64,24 @@ public class PartController {
     }
 
     @FXML
-    void onPartSave(ActionEvent event) throws IOException {
-        if (inHouse.isSelected()) {
-            if(partInHouse() && !updatePart) {
-                Inventory.addPart(partHolder);
-                mainMenu(event);
-            }
+    void onPartSave(ActionEvent event) {
+        placePart();
 
-            else if (updatePart && partInHouse())  {
+        if (inputError || logicError) {
+            //catches error and does nothing
+        } else {
+            if (updatePart) {
                 Inventory.updatePart(partToModifyIndex, partHolder);
-                mainMenu(event);
-            }
-
-            else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Incorrect Input Type");
-                alert.setContentText("Please enter a valid value for each field with \"!\"");
-                alert.showAndWait();
-            }
-        }
-
-        if (outSourced.isSelected()) {
-            if(partOutSourced() && !updatePart) {
+            } else {
                 Inventory.addPart(partHolder);
-                mainMenu(event);
             }
-
-            else if (updatePart && partOutSourced())  {
-                Inventory.updatePart(partToModifyIndex, partHolder);
-                mainMenu(event);
-            }
-
-            else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Incorrect Input Type");
-                alert.setContentText("Please enter a valid value for each field with \"!\"");
-                alert.showAndWait();
-            }
+            MainApplication.changeMenu(event, 1, 4, null);
         }
     }
 
     @FXML
-    void onPartCancel(ActionEvent event) throws IOException {
-            mainMenu(event);
-    }
-
-    public void mainMenu(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MainView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Inventory Management System");
-        stage.setScene(scene);
-        stage.show();
-
-        MainController MC = fxmlLoader.getController();
-        MC.selectTabPart();
+    void onPartCancel(ActionEvent event) {
+        MainApplication.changeMenu(event, 1, 4, null);
     }
 
     public int partID(){
@@ -137,129 +96,97 @@ public class PartController {
         return i;
     }
 
-    public boolean partInHouse() {
+    public void placePart() {
+        inputError = false;
+        logicError = false;
         String name = textPartName.getText();
-        boolean noError = true;
+        String companyName = textPartInOut.getText();
         double price = 0.0;
-        int stock = 0, max = 0, min = 0, machineId = 0;
+        int stock = 0, max = 0, min = 0, machineId =0;
 
         try {
             price = Double.parseDouble(textPartPrice.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartPrice.setPromptText("! Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            inputError = true;
+            textPartPrice.setPromptText("! Expects a number");
             textPartPrice.clear();
         }
 
         try {
             stock = Integer.parseInt(textPartStock.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartStock.setPromptText("! Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            inputError = true;
+            textPartStock.setPromptText("! Expects a number");
             textPartStock.clear();
         }
 
         try {
             max = Integer.parseInt(textPartMax.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartMax.setPromptText("! Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            inputError = true;
+            textPartMax.setPromptText("! Expects a number");
             textPartMax.clear();
         }
 
         try {
             min = Integer.parseInt(textPartMin.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartMin.setPromptText("! Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            inputError = true;
+            textPartMin.setPromptText("! Expects a number");
             textPartMin.clear();
         }
 
         try {
             machineId = Integer.parseInt(textPartInOut.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartInOut.setPromptText("! Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            inputError = true;
+            textPartInOut.setPromptText("! Expects a number");
             textPartInOut.clear();
         }
 
-        if (updatePart) {
-            partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
+        if (inputError) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Expected Input Mismatch");
+            alert.setHeaderText("Incorrect Input Type");
+            alert.setContentText("Please enter a valid value for each field with \"!\" \n cannot be empty");
+            alert.showAndWait();
+        } else {
+            if (min > max) {
+                logicError = true;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Logical Error");
+                alert.setContentText("Minimum cannot be greater than Maximum \n Minimum > Maximum");
+                alert.showAndWait();
+            } else if (stock < min || stock > max) {
+                logicError = true;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Logical Error");
+
+                if (stock < min) {
+                    alert.setContentText("Stock is out of range \n Stock < Minimum");
+                } else {
+                    alert.setContentText("Stock is out of range \n Stock > Maximum");
+                }
+
+                alert.showAndWait();
+            }
+
+            if (inHouse.isSelected()) {
+                if (updatePart) {
+                    partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
+                } else {
+                    partHolder = new InHouse(partID(), name, price, stock, min, max, machineId);
+                }
+            } else {
+                if (updatePart) {
+                    partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, companyName);
+                } else {
+                    partHolder = new Outsourced(partID(), name, price, stock, min, max, companyName);
+                }
+            }
         }
-
-        else {
-            partHolder = new InHouse(partID(), name, price, stock, min, max, machineId);
-        }
-
-        return noError;
-    }
-
-    public boolean partOutSourced() {
-        String name = textPartName.getText();
-        String machineId = textPartInOut.getText();
-        boolean noError = true;
-        double price = 0.0;
-        int stock = 0, max = 0, min = 0;
-
-        try {
-            price = Double.parseDouble(textPartPrice.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartPrice.setPromptText("! Exception: " + e.getMessage());
-            textPartPrice.clear();
-        }
-
-        try {
-            stock = Integer.parseInt(textPartStock.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartStock.setPromptText("! Exception: " + e.getMessage());
-            textPartStock.clear();
-        }
-
-        try {
-            max = Integer.parseInt(textPartMax.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartMax.setPromptText("! Exception: " + e.getMessage());
-            textPartMax.clear();
-        }
-
-        try {
-            min = Integer.parseInt(textPartMin.getText());
-        }
-
-        catch (NumberFormatException e) {
-            noError = false;
-            textPartMin.setPromptText("! Exception: " + e.getMessage());
-            textPartMin.clear();
-        }
-
-        if (updatePart) {
-            partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
-        }
-
-        else {
-            partHolder = new Outsourced(partID(), name, price, stock, min, max, machineId);
-        }
-
-        return noError;
     }
 
     public void isModifyingPart(int index, Part part) {

@@ -42,12 +42,12 @@
                                  <center>
                                     <TableView fx:id="productPartTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                       <columns>
-                                        <TableColumn fx:id="columnProductPartID" prefWidth="100.0" text="Part ID" />
-                                          <TableColumn fx:id="columnProductPartName" prefWidth="100.0" text="Part Name" />
-                                          <TableColumn fx:id="columnProductPartPrice" prefWidth="100.0" text="Price" />
-                                          <TableColumn fx:id="columnProductPartStock" prefWidth="100.0" text="Stock" />
-                                          <TableColumn fx:id="columnProductPartMin" prefWidth="100.0" text="Min" />
-                                          <TableColumn fx:id="columnProductPartMax" prefWidth="100.0" text="Max" />
+                                        <TableColumn fx:id="columnProductPartID" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part ID" />
+                                          <TableColumn fx:id="columnProductPartName" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part Name" />
+                                          <TableColumn fx:id="columnProductPartPrice" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Price" />
+                                          <TableColumn fx:id="columnProductPartStock" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Stock" />
+                                          <TableColumn fx:id="columnProductPartMin" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Min" />
+                                          <TableColumn fx:id="columnProductPartMax" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Max" />
                                       </columns>
                                     </TableView>
                                  </center>
@@ -72,12 +72,12 @@
                                  <center>
                                     <TableView fx:id="productAssociatedPartTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                        <columns>
-                                          <TableColumn fx:id="columnAssociatedPartID" prefWidth="100.0" text="Part Id" />
-                                          <TableColumn fx:id="columnAssociatedPartName" prefWidth="100.0" text="Part Name" />
-                                          <TableColumn fx:id="columnAssociatedPartPrice" prefWidth="100.0" text="Price" />
-                                          <TableColumn fx:id="columnAssociatedPartStock" prefWidth="100.0" text="Stock" />
-                                          <TableColumn fx:id="columnAssociatedPartMin" prefWidth="100.0" text="Min" />
-                                          <TableColumn fx:id="columnAssociatedPartMax" prefWidth="100.0" text="Max" />
+                                          <TableColumn fx:id="columnAssociatedPartID" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part Id" />
+                                          <TableColumn fx:id="columnAssociatedPartName" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Part Name" />
+                                          <TableColumn fx:id="columnAssociatedPartPrice" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Price" />
+                                          <TableColumn fx:id="columnAssociatedPartStock" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Stock" />
+                                          <TableColumn fx:id="columnAssociatedPartMin" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Min" />
+                                          <TableColumn fx:id="columnAssociatedPartMax" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Max" />
                                        </columns>
                                     </TableView>
                                  </center>
