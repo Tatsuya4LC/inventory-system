@@ -26,6 +26,7 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
     public static void changeMenu(ActionEvent event, int x, int y, TableView<Part> table1, TableView<Product> table2) {
         URL url = null;
         switch (x) {

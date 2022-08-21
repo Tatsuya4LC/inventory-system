@@ -136,7 +136,7 @@ public class MainController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete Confirmation");
                 alert.setHeaderText("This will delete the Part");
-                alert.setContentText("Would you like to proceed:");
+                alert.setContentText("Would you like to proceed?");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -160,7 +160,7 @@ public class MainController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete Confirmation");
                 alert.setHeaderText("This will delete the Product");
-                alert.setContentText("Would you like to proceed:");
+                alert.setContentText("Would you like to proceed?");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
