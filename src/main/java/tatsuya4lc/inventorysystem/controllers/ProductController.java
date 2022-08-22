@@ -381,8 +381,8 @@ public class ProductController {
         productHolder = product;
         updateProduct = true;
         windowHeaderProduct.setText("Modify Product");
-        productAssociatedPartTable.setItems(associatedPartsList);
         associatedPartsList.addAll(product.getAllAssociatedParts());
+        productAssociatedPartTable.setItems(associatedPartsList);
 
         textProductID.setText(String.valueOf(product.getId()));
         textProductName.setText(product.getName());
