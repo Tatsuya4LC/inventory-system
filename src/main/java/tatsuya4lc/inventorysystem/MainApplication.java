@@ -1,13 +1,12 @@
 package tatsuya4lc.inventorysystem;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tatsuya4lc.inventorysystem.controllers.MainController;
 import tatsuya4lc.inventorysystem.controllers.PartController;
@@ -24,7 +23,7 @@ import java.net.URL;
  * <p>
  *     1) Context Menu: enable user to interact with the fields in the TableView.
  *     <br>
- *     i.e. rename, copy, paste
+ *     i.e. rename, copy, paste, execute edit or delete with a mouse
  * <p>
  *     2) Dialog that informs user part object is already associated.
  * <p>
@@ -35,6 +34,18 @@ import java.net.URL;
  *     4) Search function needs to accommodate for number in name and show both matched id and matched partial name.
  *     <br>
  *     This is to prevent a logical error when product/part name consist of a number that is also the same value as the ID.
+ * <p>
+ *     5) Ability to select multiple columns, instead of one at a time.
+ * <p>
+ * RUNTIME ERROR
+ * <p>
+ *     searchPart(), searchProduct
+ * <p>
+ * LOGICAL ERROR
+ * <p>
+ *     logicCheck()
+ * <p>
+ *     check comment above the method
  *
  * @author Tristan Lozano
  */
@@ -142,6 +153,121 @@ public class MainApplication extends Application {
         }
 
         return i;
+    }
+
+    /**
+     * method for search button in the Part tabPane.
+     * calls a method that searches for matching integer
+     * or calls a method to search for the matching String
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is not a number format.
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     *
+     * @param tableView the TableView to set
+     * @param textField the TextField to set
+     */
+    public static void searchPart(TableView<Part> tableView, TextField textField) {
+        tableView.setItems(Inventory.getAllParts());
+
+        try {
+            //parses searchBarParts from String to Integer
+            int i = Integer.parseInt(textField.getText());
+            ObservableList<Part> found = FXCollections.observableArrayList();
+
+            if (Inventory.lookupPart(i) != null) {
+                tableView.getSelectionModel().select(Inventory.lookupPart(i));
+            } else if (Inventory.lookupPart(i) == null) {
+                tableView.setItems(found);
+            }
+        } catch (NumberFormatException e) {
+            tableView.getSelectionModel().clearSelection();
+            tableView.setItems(Inventory.lookupPart(textField.getText()));
+        }
+
+        textField.clear();
+    }
+
+    /**
+     * method for search button in the Product tabPane.
+     * calls a method that searches for matching integer
+     * or calls a method to search for the matching String
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is not a number format.
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     *
+     * @param tableView the TableView to set
+     * @param textField the TextField to set
+     */
+    public static void searchProduct(TableView<Product> tableView, TextField textField) {
+        tableView.setItems(Inventory.getAllProducts());
+
+        try {
+            //parses searchBarProducts from String to Integer
+            int i = Integer.parseInt(textField.getText());
+            ObservableList<Product> found = FXCollections.observableArrayList();
+
+            if (Inventory.lookupProduct(i) != null) {
+                tableView.getSelectionModel().select(Inventory.lookupProduct(i));
+            } else if (Inventory.lookupProduct(i) == null) {
+                tableView.setItems(found);
+            }
+        } catch (NumberFormatException e) {
+            tableView.getSelectionModel().clearSelection();
+            tableView.setItems(Inventory.lookupProduct(textField.getText()));
+        }
+
+        textField.clear();
+    }
+
+    /**
+     * method to check simple logical errors.
+     * <p>
+     * LOGICAL ERROR:
+     * Stock cannot be outside the Minimum and Maximum range.
+     * Minimum cannot be greater than Maximum
+     * to prevent this there are 2 if statements
+     * first statement checks if Minimum is greater than Maximum
+     * second statement checks if Stock is less than Minimum or Stock is greater than Maximum
+     * when the checks are true user is presented with an error dialog
+     *
+     * @param min the min to set
+     * @param max the max to set
+     * @param stock the stock to set
+     * @return boolean
+     */
+    public static boolean logicCheck(int min, int max, int stock) {
+        if (min > max) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Logical Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Minimum cannot be greater than Maximum \nMinimum > Maximum");
+            alert.showAndWait();
+
+            return false;
+        }
+
+        if (stock < min || stock > max) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Logical Error");
+            alert.setHeaderText(null);
+
+            if (stock < min) {
+                alert.setContentText("Stock is out of range \nStock < Minimum");
+            } else {
+                alert.setContentText("Stock is out of range \nStock > Maximum");
+            }
+
+            alert.showAndWait();
+            return false;
+        }
+
+        return true;
     }
 
     /**

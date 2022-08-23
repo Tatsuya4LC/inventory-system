@@ -19,10 +19,6 @@ import java.util.Objects;
  *     <br>
  *     placePart()
  * <p>
- *     LOGICAL ERROR
- *     <br>
- *     place()
- * <p>
  *     check comment inside the code, above the mentioned methods
  *
  * @author Tristan Lozano
@@ -125,20 +121,6 @@ public class PartController {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is not a number format
-     * when user inputs anything that's not in a number format parseInt() method cannot execute
-     * to prevent this the code is placed inside a try-catch block
-     * when a user input anything but number format, it is thrown inside the catch block
-     * <p>
-     * LOGICAL ERROR
-     * Stock cannot be outside the Minimum and Maximum range<br>
-     * Minimum cannot be greater than Maximum<br>
-     * to prevent this there are 2 if statements
-     * first statement checks if Minimum > Maximum
-     * second statement checks if Stock < Minimum or Stock > Maximum
-     * when the checks are true user is presented with an error dialog
-     * <p>
      * method to getText() from the text fields in the Part window.
      * checks for logical errors such as no input in the text field/s,
      * stock is outside min/max range and min is greater than max
@@ -146,9 +128,16 @@ public class PartController {
      * throws NumberFormatException and changes error to true
      * changes PromptText in the text fields to inform user of error
      * gives an error dialog and informs that there was an error if error variable changes to true
+     * calls a method from the MainApplication for a logical error check.
      * checks if Part object is of InHouse or OutSourced class
      * checks if adding or modifying Part when error is false
      * then creates a new Part object assigned to partHolder using the attributes from text fields and partID()
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is not a number format.
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
      *
      * @return boolean
      */
@@ -162,6 +151,11 @@ public class PartController {
         if (Objects.equals(name, "")) {
             error = true;
             textPartName.setPromptText("! cannot be empty");
+        }
+
+        if (Objects.equals(companyName, "")) {
+            error = true;
+            textPartInOut.setPromptText("! cannot be empty");
         }
 
         try {
@@ -196,12 +190,14 @@ public class PartController {
             textPartMin.clear();
         }
 
-        try {
-            machineId = Integer.parseInt(textPartInOut.getText());
-        } catch (NumberFormatException e) {
-            error = true;
-            textPartInOut.setPromptText("! Expects a number");
-            textPartInOut.clear();
+        if (inHouse.isSelected()) {
+            try {
+                machineId = Integer.parseInt(textPartInOut.getText());
+            } catch (NumberFormatException e) {
+                error = true;
+                textPartInOut.setPromptText("! Expects a number");
+                textPartInOut.clear();
+            }
         }
 
         if (error) {
@@ -211,49 +207,28 @@ public class PartController {
             alert.setContentText("Please enter a valid value for each field with \"!\" \ncannot be empty");
             alert.showAndWait();
 
-            return false;
-
         } else {
-            if (min > max) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Logical Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Minimum cannot be greater than Maximum \nMinimum > Maximum");
-                alert.showAndWait();
+            if (MainApplication.logicCheck(min, max, stock)) {
 
-                return false;
-
-            } else if (stock < min || stock > max) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Logical Error");
-                alert.setHeaderText("null");
-
-                if (stock < min) {
-                    alert.setContentText("Stock is out of range \nStock < Minimum");
+                if (inHouse.isSelected()) {
+                    if (updatePart) {
+                        partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
+                    } else {
+                        partHolder = new InHouse(MainApplication.generateID(0), name, price, stock, min, max, machineId);
+                    }
                 } else {
-                    alert.setContentText("Stock is out of range \nStock > Maximum");
+                    if (updatePart) {
+                        partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, companyName);
+                    } else {
+                        partHolder = new Outsourced(MainApplication.generateID(0), name, price, stock, min, max, companyName);
+                    }
                 }
 
-                alert.showAndWait();
-                return false;
-            }
-
-            if (inHouse.isSelected()) {
-                if (updatePart) {
-                    partHolder = new InHouse(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, machineId);
-                } else {
-                    partHolder = new InHouse(MainApplication.generateID(0), name, price, stock, min, max, machineId);
-                }
-            } else {
-                if (updatePart) {
-                    partHolder = new Outsourced(Integer.parseInt(textPartID.getText()), name, price, stock, min, max, companyName);
-                } else {
-                    partHolder = new Outsourced(MainApplication.generateID(0), name, price, stock, min, max, companyName);
-                }
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     /**

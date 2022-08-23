@@ -1,7 +1,5 @@
 package tatsuya4lc.inventorysystem.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,8 +22,7 @@ import java.util.ResourceBundle;
  * <p>
  *     RUNTIME ERROR
  *     <br>
- *     onModifyPart(), onModifyProduct(), onDeletePart(), onDeleteProduct(), onSearchPart(), onSearchProducts(),
- *     onEnterPart(), onEnterProduct(),
+ *     onModifyPart(), onModifyProduct(), onDeletePart(), onDeleteProduct()
  * <p>
  *     check comment inside the code, above the mentioned methods
  *
@@ -131,17 +128,17 @@ public class MainController implements Initializable {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is a null pointer
-     * when a user activates the modify button without selecting an item the error occurs
-     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
-     * and the selection is not null
-     * if not, no code is run
-     * <p>
      * method for modify button in the Part tabPane.
      * checks if an item is selected to prevent runtime error
      * then calls for a method from MainApplication to change scene
      * and opens the menu for modifying Part
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is a null pointer.
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
      *
      * @param event the event that the button was pressed
      */
@@ -154,17 +151,17 @@ public class MainController implements Initializable {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is a null pointer
-     * when a user activates the modify button without selecting an item the error occurs
-     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
-     * and the selection is not null
-     * if not, no code is run
-     * <p>
      * method for modify button in the Product tabPane.
      * checks if an item is selected to prevent runtime error
      * then calls for a method from the MainApplication to change scene
      * and opens the menu for modifying Product
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is a null pointer.
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
      *
      * @param event the event that the button was pressed
      */
@@ -177,18 +174,18 @@ public class MainController implements Initializable {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is a null pointer
-     * when a user activates the modify button without selecting an item the error occurs
-     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
-     * and the selection is not null
-     * if not, no code is run
-     * <p>
      * method for delete button in the Part tabPane.
      * checks if an item is selected to prevent runtime error
      * checks if Part is associated to a Product
      * gives an error dialog and informs that Part is associated
      * gives a confirmation dialog and confirms before deletion if not associated
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is a null pointer.
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
      */
     @FXML
     void onDeletePart() {
@@ -231,18 +228,18 @@ public class MainController implements Initializable {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is a null pointer
-     * when a user activates the modify button without selecting an item the error occurs
-     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
-     * and the selection is not null
-     * if not, no code is run
-     * <p>
      * method for delete button in the Product tabPane.
      * checks if an item is selected to prevent runtime error
      * checks if Product has associated Part/s
      * gives an error dialog and informs Product has associated Part/s
      * gives a confirmation dialog and confirms deletion if no associated Part/s
+     * <p>
+     * RUNTIME ERROR:
+     * an error occurs because the invocation target is a null pointer.
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
      */
     @FXML
     void onDeleteProduct() {
@@ -273,142 +270,42 @@ public class MainController implements Initializable {
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is not a number format
-     * when user inputs anything that's not in a number format parseInt() method cannot execute
-     * to prevent this the code is placed inside a try-catch block
-     * when a user input anything but number format, it is thrown inside the catch block
-     * <p>
-     * method for search button in the Part tabPane.
-     * try-catch block to test for number format to prevent Runtime error
-     * throws NumberFormatException to a method that accepts String
-     * calls a method to search for the matching String from the text field searchBarParts
+     * calls a method from the MainApplication to do the search
      */
     @FXML
     void onSearchPart() {
-        partTable.setItems(Inventory.getAllParts());
-
-        try {
-            //parses searchBarParts from String to Integer
-            int i = Integer.parseInt(searchBarParts.getText());
-            ObservableList<Part> found = FXCollections.observableArrayList();
-
-            if (Inventory.lookupPart(i) != null) {
-                partTable.getSelectionModel().select(Inventory.lookupPart(i));
-            } else if (Inventory.lookupPart(i) == null) {
-                partTable.setItems(found);
-            }
-        } catch (NumberFormatException e) {
-            partTable.getSelectionModel().clearSelection();
-            partTable.setItems(Inventory.lookupPart(searchBarParts.getText()));
-        }
-
-        searchBarParts.clear();
+        MainApplication.searchPart(partTable, searchBarParts);
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is not a number format
-     * when user inputs anything that's not in a number format parseInt() method cannot execute
-     * to prevent this the code is placed inside a try-catch block
-     * when a user input anything but number format, it is thrown inside the catch block
-     * <p>
-     * method for search button in the Product tabPane.
-     * try-catch block to test for number format to prevent Runtime error
-     * throws NumberFormatException to a method that accepts String
-     * calls a method to search for the matching String from the text field searchBarProducts
+     * calls a method from the MainApplication to do the search
      */
     @FXML
     void onSearchProduct() {
-        productTable.setItems(Inventory.getAllProducts());
-
-        try {
-            //parses searchBarProducts from String to Integer
-            int i = Integer.parseInt(searchBarProducts.getText());
-            ObservableList<Product> found = FXCollections.observableArrayList();
-
-            if (Inventory.lookupProduct(i) != null) {
-                productTable.getSelectionModel().select(Inventory.lookupProduct(i));
-            } else if (Inventory.lookupProduct(i) == null) {
-                productTable.setItems(found);
-            }
-        } catch (NumberFormatException e) {
-            productTable.getSelectionModel().clearSelection();
-            productTable.setItems(Inventory.lookupProduct(searchBarParts.getText()));
-        }
-
-        searchBarProducts.clear();
+        MainApplication.searchProduct(productTable, searchBarProducts);
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is not a number format
-     * when user inputs anything that's not in a number format parseInt() method cannot execute
-     * to prevent this the code is placed inside a try-catch block
-     * when a user input anything but number format, it is thrown inside the catch block
-     * <p>
-     * method for listening if Enter button was pressed.
-     * calls a method to search for the matching String from the text field searchBarParts
+     * calls a method from the MainApplication to do the search
      *
      * @param event the event that button was pressed
      */
     @FXML
     void onEnterPart(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            partTable.setItems(Inventory.getAllParts());
-
-            try {
-                //parses searchBarParts from String to Integer
-                int i = Integer.parseInt(searchBarParts.getText());
-                ObservableList<Part> found = FXCollections.observableArrayList();
-
-                if (Inventory.lookupPart(i) != null) {
-                    partTable.getSelectionModel().select(Inventory.lookupPart(i));
-                } else if (Inventory.lookupPart(i) == null) {
-                    partTable.setItems(found);
-                }
-            } catch (NumberFormatException e) {
-                partTable.getSelectionModel().clearSelection();
-                partTable.setItems(Inventory.lookupPart(searchBarProducts.getText()));
-            }
-
-            searchBarParts.clear();
+            MainApplication.searchPart(partTable, searchBarParts);
         }
     }
 
     /**
-     * RUNTIME ERROR
-     * an error occurs because the invocation target is not a number format
-     * when user inputs anything that's not in a number format parseInt() method cannot execute
-     * to prevent this the code is placed inside a try-catch block
-     * when a user input anything but number format, it is thrown inside the catch block
-     * <p>
-     * method for listening if Enter button was pressed.
-     * calls a method to search for the matching String from the text field searchBarProducts
+     * calls a method from the MainApplication to do the search
      *
      * @param event the event that button was pressed
      */
     @FXML
     void onEnterProduct(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            productTable.setItems(Inventory.getAllProducts());
-
-            try {
-                //parses searchBarProducts from String to Integer
-                int i = Integer.parseInt(searchBarProducts.getText());
-                ObservableList<Product> found = FXCollections.observableArrayList();
-
-                if (Inventory.lookupProduct(i) != null) {
-                    productTable.getSelectionModel().select(Inventory.lookupProduct(i));
-                } else if (Inventory.lookupProduct(i) == null) {
-                    productTable.setItems(found);
-                }
-            } catch (NumberFormatException e) {
-                productTable.getSelectionModel().clearSelection();
-                productTable.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
-            }
-
-            searchBarProducts.clear();
+            MainApplication.searchProduct(productTable, searchBarProducts);
         }
     }
 
