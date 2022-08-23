@@ -34,7 +34,7 @@ import java.net.URL;
  * <p>
  *     4) Search function needs to accommodate for number in name and show both matched id and matched partial name.
  *     <br>
- *     This is to prevent a logical error when product/part name consist of a number that is also the same as its ID.
+ *     This is to prevent a logical error when product/part name consist of a number that is also the same value as the ID.
  *
  * @author Tristan Lozano
  */
