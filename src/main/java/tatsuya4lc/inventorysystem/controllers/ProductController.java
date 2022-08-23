@@ -28,7 +28,7 @@ import java.util.Optional;
  *     <br>
  *     placeProduct()
  * <p>
- *     check comment above the mentioned methods
+ *     check comment inside the code, above the mentioned methods
  *
  * @author Tristan Lozano
  */

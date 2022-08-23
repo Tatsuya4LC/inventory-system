@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  *     onModifyPart(), onModifyProduct(), onDeletePart(), onDeleteProduct(), onSearchPart(), onSearchProducts(),
  *     onEnterPart(), onEnterProduct(),
  * <p>
- *     check comment above the mentioned methods
+ *     check comment inside the code, above the mentioned methods
  *
  * @author Tristan Lozano
  */
