@@ -4,9 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 1.1">
+    <list default="true" id="ad2f76a7-407a-4d1e-a7a2-5e6b36c8c203" name="Changes" comment="version 1.1.1">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/module-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/MainApplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/MainApplication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/MainController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/MainController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/PartController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/PartController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/ProductController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/ProductController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/controllers/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/InHouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/InHouse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Inventory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Outsourced.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Outsourced.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Part.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Part.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/Product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/models/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/tasuya4lc.inventorysystem/tatsuya4lc/inventorysystem/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/PartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tatsuya4lc/inventorysystem/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +61,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/tatsuya4lc/inventorysystem/MainApplication.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,7 +85,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yugen/Downloads/c482-software-1-main&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.445977&quot;
@@ -164,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661119929452</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="version 1.1.1">
+      <created>1661129355103</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1661129355104</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +252,8 @@
     <MESSAGE value="version 0.9.0.0.0.1" />
     <MESSAGE value="version 0.9.1" />
     <MESSAGE value="version 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.1" />
+    <MESSAGE value="version 1.1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.1.1" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -19,11 +19,22 @@ import java.net.URL;
 
 /**
  * This is the MainApplication class that creates the inventory management system application.
- * Application improvement suggestions:
- *      Context Menu: ability to interact with the fields in the TableView
- *      Dialog that informs Part is already associated
- *      Dialog that confirms to proceed with deletion and remove associated Part/s
- *      Search function needs to accommodate for number in name and show both matched id and name
+ * <p>
+ * FUTURE ENHANCEMENT
+ * <p>
+ *     1) Context Menu: enable user to interact with the fields in the TableView.
+ *     <br>
+ *     i.e. rename, copy, paste
+ * <p>
+ *     2) Dialog that informs user part object is already associated.
+ * <p>
+ *     3) Dialog that confirms to proceed with the deletion even though associated parts exist.
+ *     <br>
+ *     This deletion would also remove the associated part from the product.
+ * <p>
+ *     4) Search function needs to accommodate for number in name and show both matched id and matched partial name.
+ *     <br>
+ *     This is to prevent a logical error when product/part name consist of a number that is also the same as its ID.
  *
  * @author Tristan Lozano
  */
@@ -105,7 +116,7 @@ public class MainApplication extends Application {
 
     /**
      * method to generate ID for Product or Part.
-     * checks if i already exist
+     * checks if ID already in use
      *
      * @param x leverages to generate either for Part or Product
      * @return an Integer i
@@ -138,26 +149,6 @@ public class MainApplication extends Application {
      * This is the first method that gets called when the application runs
      */
     public static void main(String[] args) {
-        InHouse part1 = new InHouse(1, "Pedal", 123.45, 10, 1, 15, 1);
-        Outsourced part2 = new Outsourced(2, "Handle", 234.56, 9, 2, 16, "Test");
-        InHouse part3 = new InHouse(3, "Seat", 345.67, 8, 3, 17, 3);
-
-        Inventory.addPart(part1);
-        Inventory.addPart(part2);
-        Inventory.addPart(part3);
-
-        Product prod1 = new Product(1, "Bicycle", 123.45, 10, 1, 15);
-        Product prod2 = new Product(2, "Motorcycle", 234.56, 9, 2, 16);
-        Product prod3 = new Product(3, "Bike", 345.67, 8, 3, 17);
-
-        Inventory.addProduct(prod1);
-        Inventory.addProduct(prod2);
-        Inventory.addProduct(prod3);
-
-        prod1.addAssociatedPart(part1);
-        prod1.addAssociatedPart(part2);
-        prod1.addAssociatedPart(part3);
-
         launch();
     }
 }

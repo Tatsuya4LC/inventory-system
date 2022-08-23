@@ -19,6 +19,16 @@ import java.util.Optional;
 /**
  * Controller for the Product window.
  * This class provides logic for the ProductView.fxml
+ * <p>
+ *     RUNTIME ERROR
+ *     <br>
+ *     onAddAssociatedPart(), onProductSearchAdd(), onEnterPartSearch(), onRemoveAssociatedPart, placeProduct()
+ * <p>
+ *     LOGICAL ERROR
+ *     <br>
+ *     placeProduct()
+ * <p>
+ *     check comment above the mentioned methods
  *
  * @author Tristan Lozano
  */
@@ -99,6 +109,13 @@ public class ProductController {
     private Label windowHeaderProduct;
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activate the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for add button in the Product window.
      * checks if an item is selected to prevent runtime error
      * checks whether adding or modifying
@@ -132,9 +149,8 @@ public class ProductController {
             }
 
             productAssociatedPartTable.setItems(associatedPartsList);
+            productPartTable.getSelectionModel().clearSelection();
         }
-
-        productPartTable.getSelectionModel().clearSelection();
     }
 
     /**
@@ -180,6 +196,12 @@ public class ProductController {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for search button in the Product window.
      * try-catch block to test for number format to prevent Runtime error
      * throws NumberFormatException to a method that accepts String
@@ -201,13 +223,19 @@ public class ProductController {
             }
         } catch (NumberFormatException e) {
             productPartTable.getSelectionModel().clearSelection();
-            productPartTable.setItems(Inventory.lookupPart(onProductSearchPart.getText()));
+            productPartTable.setItems(Inventory.lookupPart(String.valueOf(e)));
         }
 
         onProductSearchPart.clear();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for listening if Enter button was pressed.
      * calls a method to search for the matching String from the text field onProductSearchPart
      *
@@ -230,7 +258,7 @@ public class ProductController {
                 }
             } catch (NumberFormatException e) {
                 productPartTable.getSelectionModel().clearSelection();
-                productPartTable.setItems(Inventory.lookupPart(onProductSearchPart.getText()));
+                productPartTable.setItems(Inventory.lookupPart(String.valueOf(e)));
             }
 
             onProductSearchPart.clear();
@@ -238,6 +266,13 @@ public class ProductController {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activate the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for remove associated part button in the Product window.
      * checks if an item is selected to prevent runtime error
      * checks if Product is not null
@@ -269,6 +304,20 @@ public class ProductController {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
+     * LOGICAL ERROR
+     * Stock cannot be outside the Minimum and Maximum range<br>
+     * Minimum cannot be greater than Maximum<br>
+     * to prevent this there are 2 if statements
+     * first statement checks if Minimum > Maximum
+     * second statement checks if Stock < Minimum or Stock > Maximum
+     * when the checks are true user is presented with an error dialog
+     * <p>
      * method to getText() from the text fields in the Product window.
      * checks for logical errors such as no input in the text field/s,
      * stock is outside min/max range and min is greater than max

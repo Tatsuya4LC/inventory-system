@@ -14,6 +14,16 @@ import java.util.Objects;
 /**
  * Controller for the Part window.
  * This class provides logic for the PartView.fxml
+ * <p>
+ *     RUNTIME ERROR
+ *     <br>
+ *     placePart()
+ * <p>
+ *     LOGICAL ERROR
+ *     <br>
+ *     place()
+ * <p>
+ *     check comment above the mentioned methods
  *
  * @author Tristan Lozano
  */
@@ -115,6 +125,20 @@ public class PartController {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
+     * LOGICAL ERROR
+     * Stock cannot be outside the Minimum and Maximum range<br>
+     * Minimum cannot be greater than Maximum<br>
+     * to prevent this there are 2 if statements
+     * first statement checks if Minimum > Maximum
+     * second statement checks if Stock < Minimum or Stock > Maximum
+     * when the checks are true user is presented with an error dialog
+     * <p>
      * method to getText() from the text fields in the Part window.
      * checks for logical errors such as no input in the text field/s,
      * stock is outside min/max range and min is greater than max

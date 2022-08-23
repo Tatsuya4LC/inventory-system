@@ -79,7 +79,7 @@
                                  </HBox>
                                  <HBox spacing="10.0">
                                     <TextField fx:id="searchBarParts" alignment="CENTER" onKeyPressed="#onEnterPart" prefHeight="25.0" prefWidth="176.0" promptText="ID or Name" />
-                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchParts" prefHeight="25.0" prefWidth="60.0" text="Search">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSearchPart" prefHeight="25.0" prefWidth="60.0" text="Search">
                                        <font>
                                           <Font size="11.0" />
                                        </font>

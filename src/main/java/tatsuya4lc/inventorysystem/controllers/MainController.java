@@ -21,6 +21,13 @@ import java.util.ResourceBundle;
 /**
  * The controller for the main window.
  * This class provides control logic for MainView.fxml
+ * <p>
+ *     RUNTIME ERROR
+ *     <br>
+ *     onModifyPart(), onModifyProduct(), onDeletePart(), onDeleteProduct(), onSearchPart(), onSearchProducts(),
+ *     onEnterPart(), onEnterProduct(),
+ * <p>
+ *     check comment above the mentioned methods
  *
  * @author Tristan Lozano
  */
@@ -124,6 +131,13 @@ public class MainController implements Initializable {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for modify button in the Part tabPane.
      * checks if an item is selected to prevent runtime error
      * then calls for a method from MainApplication to change scene
@@ -135,12 +149,18 @@ public class MainController implements Initializable {
     void onModifyPart(ActionEvent event) {
         if (!partTable.getSelectionModel().isEmpty()) {
             MainApplication.changeMenu(event, 2, 1, partTable, null);
+            partTable.getSelectionModel().clearSelection();
         }
-
-        partTable.getSelectionModel().clearSelection();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for modify button in the Product tabPane.
      * checks if an item is selected to prevent runtime error
      * then calls for a method from the MainApplication to change scene
@@ -152,12 +172,18 @@ public class MainController implements Initializable {
     void onModifyProduct(ActionEvent event) {
         if (!productTable.getSelectionModel().isEmpty()) {
             MainApplication.changeMenu(event, 3, 2, null, productTable);
+            productTable.getSelectionModel().clearSelection();
         }
-
-        productTable.getSelectionModel().clearSelection();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for delete button in the Part tabPane.
      * checks if an item is selected to prevent runtime error
      * checks if Part is associated to a Product
@@ -200,12 +226,18 @@ public class MainController implements Initializable {
                     partTable.getSelectionModel().select(null);
                 }
             }
+            partTable.getSelectionModel().clearSelection();
         }
-
-        partTable.getSelectionModel().clearSelection();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is a null pointer
+     * when a user activates the modify button without selecting an item the error occurs
+     * to prevent this error, there is an if statement checking that the user selected an item in the TableView
+     * and the selection is not null
+     * if not, no code is run
+     * <p>
      * method for delete button in the Product tabPane.
      * checks if an item is selected to prevent runtime error
      * checks if Product has associated Part/s
@@ -235,19 +267,25 @@ public class MainController implements Initializable {
                     productTable.getSelectionModel().select(null);
                 }
             }
+            productTable.getSelectionModel().clearSelection();
         }
 
-        productTable.getSelectionModel().clearSelection();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for search button in the Part tabPane.
      * try-catch block to test for number format to prevent Runtime error
      * throws NumberFormatException to a method that accepts String
      * calls a method to search for the matching String from the text field searchBarParts
      */
     @FXML
-    void onSearchParts() {
+    void onSearchPart() {
         partTable.setItems(Inventory.getAllParts());
 
         try {
@@ -269,6 +307,12 @@ public class MainController implements Initializable {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for search button in the Product tabPane.
      * try-catch block to test for number format to prevent Runtime error
      * throws NumberFormatException to a method that accepts String
@@ -290,13 +334,19 @@ public class MainController implements Initializable {
             }
         } catch (NumberFormatException e) {
             productTable.getSelectionModel().clearSelection();
-            productTable.setItems(Inventory.lookupProduct(searchBarProducts.getText()));
+            productTable.setItems(Inventory.lookupProduct(searchBarParts.getText()));
         }
 
         searchBarProducts.clear();
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for listening if Enter button was pressed.
      * calls a method to search for the matching String from the text field searchBarParts
      *
@@ -319,7 +369,7 @@ public class MainController implements Initializable {
                 }
             } catch (NumberFormatException e) {
                 partTable.getSelectionModel().clearSelection();
-                partTable.setItems(Inventory.lookupPart(searchBarParts.getText()));
+                partTable.setItems(Inventory.lookupPart(searchBarProducts.getText()));
             }
 
             searchBarParts.clear();
@@ -327,6 +377,12 @@ public class MainController implements Initializable {
     }
 
     /**
+     * RUNTIME ERROR
+     * an error occurs because the invocation target is not a number format
+     * when user inputs anything that's not in a number format parseInt() method cannot execute
+     * to prevent this the code is placed inside a try-catch block
+     * when a user input anything but number format, it is thrown inside the catch block
+     * <p>
      * method for listening if Enter button was pressed.
      * calls a method to search for the matching String from the text field searchBarProducts
      *
